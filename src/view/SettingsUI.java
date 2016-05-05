@@ -16,6 +16,7 @@ public class SettingsUI extends javax.swing.JFrame {
      */
     public SettingsUI() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
