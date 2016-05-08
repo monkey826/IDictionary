@@ -5,11 +5,16 @@
  */
 package view;
 
+import com.sun.javafx.scene.control.SelectedCellsMap;
+import java.awt.event.ActionListener;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Monkey-private
  */
-public class TranslateUI extends javax.swing.JFrame {
+public class TranslateUI extends javax.swing.JFrame implements ITranslateUI{
 
     /**
      * Creates new form TranslateUI
@@ -17,8 +22,40 @@ public class TranslateUI extends javax.swing.JFrame {
     public TranslateUI() {
         initComponents();
         taResults.setEditable(false);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.JFrame.HIDE_ON_CLOSE);
+        setTitle("Translate Online by Bing Translator");
     }
 
+    @Override
+    public void setRbtnEVActionListener(ActionListener listener){
+        this.rbtnEV.addActionListener(listener);
+    }
+    @Override
+    public void setRbtnVEActionListener(ActionListener listener){
+        this.rbtnVE.addActionListener(listener);
+    }
+    @Override
+    public void setBtnTranslateActionListener(ActionListener listener){
+        this.btnTranslate.addActionListener(listener);
+    }
+    @Override
+    public JTextArea getTaSource(){
+        return taSource;
+    }
+    @Override
+    public JTextArea getTaResults(){
+        return taResults;
+    }
+    @Override
+    public JRadioButton getRbtnEV(){
+        return rbtnEV;
+    }
+    @Override
+    public JRadioButton getRbtnVE(){
+        return rbtnVE;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +65,7 @@ public class TranslateUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         taSource = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -52,8 +90,11 @@ public class TranslateUI extends javax.swing.JFrame {
         taResults.setWrapStyleWord(true);
         jScrollPane2.setViewportView(taResults);
 
+        buttonGroup1.add(rbtnVE);
+        rbtnVE.setSelected(true);
         rbtnVE.setText("Việt - Anh");
 
+        buttonGroup1.add(rbtnEV);
         rbtnEV.setText("English - Vietnamese");
 
         lbTitle.setText("Enter the text to be translated");
@@ -109,40 +150,41 @@ public class TranslateUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TranslateUI().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(TranslateUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TranslateUI().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTranslate;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

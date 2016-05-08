@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
-
-import java.util.Vector;
+package view;
 
 /**
  *
  * @author Monkey-private
  */
-public interface IDictionary {
-    public Vector<String> getListWord();
+public interface ISettingsUI {
+    
 }

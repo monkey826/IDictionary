@@ -17,16 +17,16 @@ import javax.swing.DefaultListModel;
  *
  * @author Monkey-private
  */
-public final class Dictionary implements Runnable, IDictionary {
+public class Dictionary implements  IDictionary,Runnable {
 
-    public Hashtable<String, String> mapWord;
+//    public Hashtable<String, String> mapWord;
     private final File indexesFile;
     private final File meansFile;
-    public Vector<String> words = new Vector<>();
-    private DefaultListModel model;
+    private Vector<String> words = new Vector<>();
+//    private DefaultListModel model;
     //Constructor 
     public Dictionary() {
-        this.mapWord = new Hashtable<>();
+//        this.mapWord = new Hashtable<>();
         // Indexes file
         indexesFile = new File(System.getProperty("user.dir").concat("/data/anhviet109K.index"));
         // Meanning file
@@ -37,15 +37,15 @@ public final class Dictionary implements Runnable, IDictionary {
         new Thread(this).start();
     }
 
-    // Read file index
+//     Read file index
     @Override
     public void run() {
-        loadMeaning();
+        loadIndex();
     }
 
-    public DefaultListModel loadIndex() {
-        model = new DefaultListModel();
-        int numberWords = 0;
+    public void loadIndex() {
+//        model = new DefaultListModel();
+//        int numberWords = 0;
         long begin = System.currentTimeMillis();
         try {
             // Using StringBuilder 
@@ -67,9 +67,9 @@ public final class Dictionary implements Runnable, IDictionary {
 //                        String word = mapWord.get(elements[0]);
                         int offset = base64ToBase10(elements[1]);
                         int length = base64ToBase10(elements[2]);
-//                        words.add(elements[0]);
-                        model.add(numberWords,elements[0]);
-                        numberWords++;
+                        words.add(elements[0]);
+//                        model.add(numberWords,elements[0]);
+//                        numberWords++;
 //                        if ( word == null){
 //                            // If word is not on list.
 //                        }
@@ -82,11 +82,11 @@ public final class Dictionary implements Runnable, IDictionary {
         }
         long end = System.currentTimeMillis();
         System.out.println("Load indexes file took " + (end-begin) +" ms");
-        return model;
+//        return model;
     }
 
-    public void loadMeaning() {
-
+    public void loadMeaning(String word) {
+        
     }
 
     public int base64ToBase10(String val) {
@@ -97,5 +97,16 @@ public final class Dictionary implements Runnable, IDictionary {
             number += opcode.indexOf(val.charAt(i)) * Math.pow(64, length - i - 1);
         }
         return number;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public Vector<String> getListWord(){
+//        System.out.println(words);
+        return words;
+        
     }
 }

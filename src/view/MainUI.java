@@ -5,25 +5,27 @@
  */
 package view;
 
+import javax.swing.JList;
+import javax.swing.JTextArea;
 import model.Dictionary;
 
 /**
  *
  * @author Monkey-private
  */
-public class MainUI extends javax.swing.JFrame {
+public class MainUI extends javax.swing.JFrame implements IMainUI {
 
     /**
      * Creates new form MainUI
      */
     public MainUI() {
-        Dictionary dict = new Dictionary();
         initComponents();
-        taMeanning.setEditable(false);
+        taMeaning.setEditable(false);
         setTitle("IDictionary ");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        listIndex.setModel(dict.loadIndex());
+//        setVisible(true);
+
 //        lbToolTip.setText("Size = " + dict.loadIndex().size());
     }
 
@@ -54,7 +56,7 @@ public class MainUI extends javax.swing.JFrame {
         btnAbout = new javax.swing.JButton();
         btnHelpContents = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        taMeanning = new javax.swing.JTextArea();
+        taMeaning = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         listIndex = new javax.swing.JList<>();
         tfSearch = new javax.swing.JTextField();
@@ -99,11 +101,6 @@ public class MainUI extends javax.swing.JFrame {
         btnListen.setText("Listen");
 
         btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnelDictionaryLayout = new javax.swing.GroupLayout(pnelDictionary);
         pnelDictionary.setLayout(pnelDictionaryLayout);
@@ -121,7 +118,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(btnCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbToolTip, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         pnelDictionaryLayout.setVerticalGroup(
             pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,11 +137,6 @@ public class MainUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Dictionary & Culture", pnelDictionary);
 
         btnTranslateSentence.setText("Translate Sentence");
-        btnTranslateSentence.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTranslateSentenceActionPerformed(evt);
-            }
-        });
 
         btnExport.setText("Export ");
 
@@ -157,7 +149,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(btnTranslateSentence)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 408, Short.MAX_VALUE))
+                .addGap(0, 418, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,11 +164,6 @@ public class MainUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Tools", jPanel1);
 
         btnAbout.setText("About");
-        btnAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAboutActionPerformed(evt);
-            }
-        });
 
         btnHelpContents.setText("Help Contents");
 
@@ -189,7 +176,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(btnHelpContents, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 410, Short.MAX_VALUE))
+                .addGap(0, 420, Short.MAX_VALUE))
         );
         pnelHelpLayout.setVerticalGroup(
             pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,12 +190,12 @@ public class MainUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Help", pnelHelp);
 
-        taMeanning.setColumns(20);
-        taMeanning.setLineWrap(true);
-        taMeanning.setRows(5);
-        taMeanning.setWrapStyleWord(true);
-        taMeanning.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane2.setViewportView(taMeanning);
+        taMeaning.setColumns(20);
+        taMeaning.setLineWrap(true);
+        taMeaning.setRows(5);
+        taMeaning.setWrapStyleWord(true);
+        taMeaning.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane2.setViewportView(taMeaning);
 
         listIndex.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -216,12 +203,6 @@ public class MainUI extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listIndex);
-
-        tfSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfSearchActionPerformed(evt);
-            }
-        });
 
         lbSearch.setLabelFor(tfSearch);
         lbSearch.setText("Search");
@@ -243,11 +224,6 @@ public class MainUI extends javax.swing.JFrame {
         jScrollPane3.setViewportView(listResults);
 
         btnSettings.setText("Settings");
-        btnSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSettingsActionPerformed(evt);
-            }
-        });
 
         jDesktopPane1.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -280,7 +256,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jTabbedPane1))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -320,9 +296,7 @@ public class MainUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,65 +305,124 @@ public class MainUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingsActionPerformed
+    @Override
+    public void setListIndexValueChanged(javax.swing.event.ListSelectionListener listener) {                                       
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSettingsActionPerformed
+        this.listIndex.addListSelectionListener(listener);
+    }                                      
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+    @Override
+    public void setTfSearchKeyReleased(java.awt.event.KeyListener evt) {                                     
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrintActionPerformed
+        this.tfSearch.addKeyListener(evt);
+    }                                    
 
-    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+    @Override
+    public void setTfSearchKeyPressed(java.awt.event.KeyListener evt) {                                    
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAboutActionPerformed
-
-    private void btnTranslateSentenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTranslateSentenceActionPerformed
+        this.tfSearch.addKeyListener(evt);
+    }        
+    @Override
+    public void setBtnSettingsActionListener(java.awt.event.ActionListener evt) {                                            
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTranslateSentenceActionPerformed
+        this.btnSettings.addActionListener(evt);
+    }                                           
 
-    private void tfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSearchActionPerformed
+    @Override
+    public void setBtnPrintActionListener(java.awt.event.ActionListener evt) {                                         
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfSearchActionPerformed
+        this.btnPrint.addActionListener(evt);
+    }                                        
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    @Override
+    public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener evt) {                                                     
+        this.btnTranslateSentence.addActionListener(evt);
+    }                                                    
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainUI().setVisible(true);
-            }
-        });
+    @Override
+    public void setBtnPrevEntryActionListener(java.awt.event.ActionListener evt) {                                             
+        // TODO add your handling code here:
+        this.btnPrevEntry.addActionListener(evt);
+    }                                            
+
+    @Override
+    public void setBtnNextEntryActionListener(java.awt.event.ActionListener evt) {                                             
+        // TODO add your handling code here:
+        this.btnNextEntry.addActionListener(evt);
+    }                                            
+
+    @Override
+    public void setBtnListenActionListener(java.awt.event.ActionListener evt) {                                          
+        // TODO add your handling code here:
+        this.btnListen.addActionListener(evt);
+    }                                         
+
+    @Override
+    public void setBtnCopyActionListener(java.awt.event.ActionListener evt) {                                        
+        // TODO add your handling code here:
+        this.btnCopy.addActionListener(evt);
+    }                                       
+
+    @Override
+    public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt) {                                                
+        // TODO add your handling code here:
+        this.btnHelpContents.addActionListener(evt);
+    }  
+    @Override
+    public void setBtnAboutActionListener(java.awt.event.ActionListener evt) {
+        this.btnAbout.addActionListener(evt);
     }
+    @Override
+    public JList getListIndex(){
+        return this.listIndex;
+    }
+    @Override
+    public JTextArea getTaMeaning(){
+        return this.taMeaning;
+    }
+    
+    @Override
+    public void setVisibleUI(boolean bool){
+        setVisible(bool);
+    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MainUI().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAbout;
-    private javax.swing.JButton btnCopy;
+    public javax.swing.JButton btnAbout;
+    public javax.swing.JButton btnCopy;
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnHelpContents;
     private javax.swing.JButton btnListen;
@@ -414,7 +447,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JList<String> listResults;
     private javax.swing.JPanel pnelDictionary;
     private javax.swing.JPanel pnelHelp;
-    private javax.swing.JTextArea taMeanning;
+    private javax.swing.JTextArea taMeaning;
     private javax.swing.JTextField tfSearch;
     // End of variables declaration//GEN-END:variables
 }
