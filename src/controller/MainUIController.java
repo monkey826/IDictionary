@@ -29,7 +29,7 @@ public final class MainUIController {
         dictData = new Dictionary();
         mainUI = new MainUI();
         
-//        setListWord();
+        setListWord();
         mainUI.setVisibleUI(true);
         mainUI.setBtnSettingsActionListener(new ActionListener() {
             @Override

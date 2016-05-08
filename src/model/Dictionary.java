@@ -17,7 +17,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Monkey-private
  */
-public class Dictionary implements  IDictionary,Runnable {
+public class Dictionary implements  IDictionary {
 
 //    public Hashtable<String, String> mapWord;
     private final File indexesFile;
@@ -32,17 +32,12 @@ public class Dictionary implements  IDictionary,Runnable {
         // Meanning file
         meansFile = new File(System.getProperty("user.dir").concat("/data/anhviet109K.dict"));
         // Load index file 
-//        loadIndex();
+        loadIndex();
         // New thread for read meannings file
-        new Thread(this).start();
     }
 
 //     Read file index
-    @Override
-    public void run() {
-        loadIndex();
-    }
-
+    
     public void loadIndex() {
 //        model = new DefaultListModel();
 //        int numberWords = 0;
