@@ -19,9 +19,6 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
     public SettingsUI() {
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Settings dictionary");
-        setDefaultCloseOperation(javax.swing.JFrame.HIDE_ON_CLOSE);
-        setLocationRelativeTo(null);
         setVisible(true);
     }
     public void setBtnSaveLanguageActionListener(ActionListener listener){
@@ -54,7 +51,8 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         btnCancelFont = new javax.swing.JButton();
         lbFontColor = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Settings dictionary");
 
         btnSaveLanguage.setText("Save");
 

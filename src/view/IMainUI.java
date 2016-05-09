@@ -7,6 +7,7 @@ package view;
 
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -15,9 +16,8 @@ import javax.swing.JTextArea;
 public interface IMainUI {
     public void setListIndexValueChanged(javax.swing.event.ListSelectionListener evt);
 
-    public void setTfSearchKeyReleased(java.awt.event.KeyListener evt);
+    public void setTfSearchKeyListener(java.awt.event.KeyListener evt);
 
-    public void setTfSearchKeyPressed(java.awt.event.KeyListener evt);
     public void setBtnSettingsActionListener(java.awt.event.ActionListener evt);                                           
 
     public void setBtnPrintActionListener(java.awt.event.ActionListener evt);
@@ -37,5 +37,5 @@ public interface IMainUI {
     public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt);
     public JList getListIndex();
     public JTextArea getTaMeaning();
-    public void setVisibleUI(boolean bool);
+    public JTextField getTfSearch();
 }

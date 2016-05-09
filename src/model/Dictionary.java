@@ -7,40 +7,44 @@ package model;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.Hashtable;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import javax.swing.DefaultListModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Monkey-private
  */
-public class Dictionary implements  IDictionary {
+public class Dictionary implements IDictionary {
 
-//    public Hashtable<String, String> mapWord;
+    public Hashtable<String, Word> mapWord;
     private final File indexesFile;
     private final File meansFile;
     private Vector<String> words = new Vector<>();
-//    private DefaultListModel model;
+    private static RandomAccessFile raf;
+    private static Word word;
     //Constructor 
+
     public Dictionary() {
-//        this.mapWord = new Hashtable<>();
+        // Init hashtable
+        this.mapWord = new Hashtable<>();
         // Indexes file
-        indexesFile = new File(System.getProperty("user.dir").concat("/data/anhviet109K.index"));
+        indexesFile = new File(IDictionary.pathIndex);
         // Meanning file
-        meansFile = new File(System.getProperty("user.dir").concat("/data/anhviet109K.dict"));
+        meansFile = new File(IDictionary.pathMeaning);
+        // Init random access file
+
         // Load index file 
         loadIndex();
-        // New thread for read meannings file
     }
 
-//     Read file index
-    
     public void loadIndex() {
-//        model = new DefaultListModel();
-//        int numberWords = 0;
+
         long begin = System.currentTimeMillis();
         try {
             // Using StringBuilder 
@@ -62,13 +66,12 @@ public class Dictionary implements  IDictionary {
 //                        String word = mapWord.get(elements[0]);
                         int offset = base64ToBase10(elements[1]);
                         int length = base64ToBase10(elements[2]);
+                        // Add to vector words.
                         words.add(elements[0]);
-//                        model.add(numberWords,elements[0]);
-//                        numberWords++;
-//                        if ( word == null){
-//                            // If word is not on list.
-//                        }
-                                
+                        // Create a new word;
+                        word = new Word(elements[0], offset, length);
+                        // Add to hashtable;
+                        mapWord.put(elements[0], word);
                     }
                 }
             }
@@ -76,12 +79,7 @@ public class Dictionary implements  IDictionary {
             System.out.println("Error IO " + ioe.getMessage());;
         }
         long end = System.currentTimeMillis();
-        System.out.println("Load indexes file took " + (end-begin) +" ms");
-//        return model;
-    }
-
-    public void loadMeaning(String word) {
-        
+        System.out.println("Load indexes file took " + (end - begin) + " ms");
     }
 
     public int base64ToBase10(String val) {
@@ -94,14 +92,33 @@ public class Dictionary implements  IDictionary {
         return number;
     }
 
+    @Override
+    public String loadMeaning(String word) {
+        String meaning = "";
+        try {
+            raf = new RandomAccessFile(meansFile, "r");
+            Word wordSearch = mapWord.get(word);
+            for (int i = 0; i < wordSearch.getLength(); i++) {
+                byte[] buff = new byte[wordSearch.getLength()];
+                raf.seek(wordSearch.getOffset());
+                raf.read(buff, 0, wordSearch.getLength());
+                meaning = new String(buff, "UTF8").replaceAll("\0+", "");
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return meaning;
+    }
+
     /**
      *
      * @return
      */
     @Override
-    public Vector<String> getListWord(){
-//        System.out.println(words);
+    public Vector<String> getListWord() {
         return words;
-        
+
     }
 }

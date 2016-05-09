@@ -5,7 +5,6 @@
  */
 package view;
 
-import com.sun.javafx.scene.control.SelectedCellsMap;
 import java.awt.event.ActionListener;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -24,8 +23,6 @@ public class TranslateUI extends javax.swing.JFrame implements ITranslateUI{
         taResults.setEditable(false);
         setVisible(true);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(javax.swing.JFrame.HIDE_ON_CLOSE);
-        setTitle("Translate Online by Bing Translator");
     }
 
     @Override
@@ -76,7 +73,8 @@ public class TranslateUI extends javax.swing.JFrame implements ITranslateUI{
         btnTranslate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Translate Online by Bing Translator");
 
         taSource.setColumns(20);
         taSource.setLineWrap(true);

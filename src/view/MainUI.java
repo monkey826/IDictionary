@@ -7,6 +7,7 @@ package view;
 
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import model.Dictionary;
 
 /**
@@ -21,12 +22,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     public MainUI() {
         initComponents();
         taMeaning.setEditable(false);
-        setTitle("IDictionary ");
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-//        setVisible(true);
-
-//        lbToolTip.setText("Size = " + dict.loadIndex().size());
+        setVisible(true);
     }
 
     /**
@@ -87,6 +84,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("IDictionary ");
 
         btnPrevEntry.setText("Prev");
         btnPrevEntry.setToolTipText("Previous entry");
@@ -118,7 +116,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                 .addComponent(btnCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbToolTip, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         pnelDictionaryLayout.setVerticalGroup(
             pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +147,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                 .addComponent(btnTranslateSentence)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 418, Short.MAX_VALUE))
+                .addGap(0, 406, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +174,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                 .addComponent(btnHelpContents, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 420, Short.MAX_VALUE))
+                .addGap(0, 408, Short.MAX_VALUE))
         );
         pnelHelpLayout.setVerticalGroup(
             pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +201,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listIndex);
+
+        tfSearch.setToolTipText("Enter word here");
 
         lbSearch.setLabelFor(tfSearch);
         lbSearch.setText("Search");
@@ -241,22 +241,21 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbListWords, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbListResults, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbListWords, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbListResults, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane1))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -312,16 +311,12 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }                                      
 
     @Override
-    public void setTfSearchKeyReleased(java.awt.event.KeyListener evt) {                                     
+    public void setTfSearchKeyListener(java.awt.event.KeyListener evt) {                                     
         // TODO add your handling code here:
         this.tfSearch.addKeyListener(evt);
     }                                    
 
-    @Override
-    public void setTfSearchKeyPressed(java.awt.event.KeyListener evt) {                                    
-        // TODO add your handling code here:
-        this.tfSearch.addKeyListener(evt);
-    }        
+         
     @Override
     public void setBtnSettingsActionListener(java.awt.event.ActionListener evt) {                                            
         // TODO add your handling code here:
@@ -380,11 +375,11 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     public JTextArea getTaMeaning(){
         return this.taMeaning;
     }
-    
     @Override
-    public void setVisibleUI(boolean bool){
-        setVisible(bool);
+    public JTextField getTfSearch(){
+        return this.tfSearch;
     }
+    
 //    /**
 //     * @param args the command line arguments
 //     */
