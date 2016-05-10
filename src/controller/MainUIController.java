@@ -13,7 +13,6 @@ import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Dictionary;
@@ -39,19 +38,27 @@ public final class MainUIController {
         mainUI = new MainUI();
 
         setListWord();
+        /**
+         * Set Settings function
+         */
         mainUI.setBtnSettingsActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 settingsController = new SettingsUIController();
             }
-        }
-        );
+        });
+        /**
+         * Set Translate Sentences Online function
+         */
         mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 translateController = new TranslateUIController();
             }
         });
+        /**
+         * Set TextField Search KeyListener
+         */
         mainUI.setTfSearchKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -60,6 +67,7 @@ public final class MainUIController {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                // IF Enter..
                 if (e.getKeyCode() == KeyEvent.VK_ENTER){
                     String value = mainUI.getTfSearch().getText().toLowerCase().trim();
                     boolean isFind = false; // Check have results or not.
@@ -82,6 +90,7 @@ public final class MainUIController {
                 String value = mainUI.getTfSearch().getText().toLowerCase().trim();
                 JList listWords = mainUI.getListIndex();
                 int index;
+                // Get index of vector and show where this word on JList
                 for ( index  = 0; index < dictData.getListWord().size(); index ++){
                     String it = dictData.getListWord().get(index).toLowerCase();
                     if (it.startsWith(value) || it.compareTo(value) > 0){
@@ -101,6 +110,9 @@ public final class MainUIController {
                 listWords.scrollRectToVisible(listWords.getCellBounds(index, (int) (index + num)));
             }
         });
+        /**
+         * If click another word, make action : show meaning.
+         */
         mainUI.setListIndexValueChanged(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -113,7 +125,9 @@ public final class MainUIController {
             }
         });
     }
-
+    /**
+     * Get word from Vector into JList
+     */
     public void setListWord() {
         int i = 0;
         for (Iterator<String> it = dictData.getListWord().iterator(); it.hasNext(); i++) {

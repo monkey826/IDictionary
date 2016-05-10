@@ -5,19 +5,15 @@
  */
 package model;
 
-import java.io.File;
-import java.io.RandomAccessFile;
-
 /**
  *
  * @author Monkey-private
  */
-public class Word {
+public class Word implements IWord{
 
-    private String word;
+    private final String word;
     private final int offset;
     private final int length;
-    // Meanning file
     
 
     public Word(String word, int offset, int length) {
@@ -25,10 +21,19 @@ public class Word {
         this.offset = offset;
         this.length = length;
     }
-
+    /**
+     * (non-Javadoc)
+     * @see model.IWord#getOffset() 
+     */
+    @Override
     public int getOffset(){
         return offset;
     }
+    /**
+     * (non-Javadoc)
+     * @see model.IWord#getLength()  
+     */
+    @Override
     public int getLength(){
         return length;
     }

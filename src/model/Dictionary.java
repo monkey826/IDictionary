@@ -27,22 +27,28 @@ public class Dictionary implements IDictionary {
     private final File meansFile;
     private Vector<String> words = new Vector<>();
     private static RandomAccessFile raf;
-    private static Word word;
-    //Constructor 
-
+    private static IWord word;
+     
+    /**
+     * Constructor : initiate File data dictioanry and load file index;
+     */
     public Dictionary() {
         // Init hashtable
         this.mapWord = new Hashtable<>();
         // Indexes file
-        indexesFile = new File(IDictionary.pathIndex);
+        indexesFile = new File(IDictionary.pathIndexEV);
         // Meanning file
-        meansFile = new File(IDictionary.pathMeaning);
+        meansFile = new File(IDictionary.pathMeaningEV);
         // Init random access file
 
         // Load index file 
         loadIndex();
     }
-
+    /**
+     * (non-Javadoc)
+     * @see model.IDictionary#loadIndex 
+     */
+    @Override
     public void loadIndex() {
 
         long begin = System.currentTimeMillis();
@@ -71,7 +77,7 @@ public class Dictionary implements IDictionary {
                         // Create a new word;
                         word = new Word(elements[0], offset, length);
                         // Add to hashtable;
-                        mapWord.put(elements[0], word);
+                        mapWord.put(elements[0], (Word) word);
                     }
                 }
             }
@@ -81,7 +87,11 @@ public class Dictionary implements IDictionary {
         long end = System.currentTimeMillis();
         System.out.println("Load indexes file took " + (end - begin) + " ms");
     }
-
+    /**
+     * Convert base 64 number to base 10 number;
+     * @param val
+     * @return Base10
+     */
     public int base64ToBase10(String val) {
         int number = 0;
         int length = val.length();
@@ -91,17 +101,21 @@ public class Dictionary implements IDictionary {
         }
         return number;
     }
-
+    /**
+     * (non-Java doc)
+     * 
+     * @see model.IDictionary#loadMeaning(java.lang.String)  
+     */
     @Override
     public String loadMeaning(String word) {
         String meaning = "";
         try {
-            raf = new RandomAccessFile(meansFile, "r");
-            Word wordSearch = mapWord.get(word);
+            raf = new RandomAccessFile(meansFile, "r"); // Using random access file to seek position
+            IWord wordSearch = mapWord.get(word);
             for (int i = 0; i < wordSearch.getLength(); i++) {
                 byte[] buff = new byte[wordSearch.getLength()];
                 raf.seek(wordSearch.getOffset());
-                raf.read(buff, 0, wordSearch.getLength());
+                raf.read(buff, 0, wordSearch.getLength()); // read date into buff
                 meaning = new String(buff, "UTF8").replaceAll("\0+", "");
             }
         } catch (FileNotFoundException ex) {
@@ -113,8 +127,8 @@ public class Dictionary implements IDictionary {
     }
 
     /**
-     *
-     * @return
+     * (non-Javadoc)
+     * @see model.IDictionary#getListWord() 
      */
     @Override
     public Vector<String> getListWord() {

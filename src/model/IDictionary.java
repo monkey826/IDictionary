@@ -12,8 +12,27 @@ import java.util.Vector;
  * @author Monkey-private
  */
 public interface IDictionary {
-    public final String pathIndex = System.getProperty("user.dir").concat("/data/anhviet109K.index");
-    public final String pathMeaning = System.getProperty("user.dir").concat("/data/anhviet109K.dict");
+    /**
+     * Path index file data dictionary English-Vietnamese
+     */
+    public final String pathIndexEV = System.getProperty("user.dir").concat("/data/anhviet109K.index");
+    /**
+     * Path meaning file data dictionary English-Vietnamese
+     */
+    public final String pathMeaningEV = System.getProperty("user.dir").concat("/data/anhviet109K.dict");
+    /**
+     *  Get Vector list words
+     * @return JList listWord;
+     */
     public Vector<String> getListWord();
+    /**
+     * 
+     * @param word
+     * @return Meaning of this word
+     */
     public String loadMeaning(String word);
+    /**
+     * Load JList full words from database to Vector and hashtable
+     */
+    public void loadIndex();
 }
