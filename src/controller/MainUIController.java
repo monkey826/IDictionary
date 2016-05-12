@@ -23,7 +23,6 @@ import java.util.StringTokenizer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Dictionary;
@@ -62,6 +61,7 @@ public final class MainUIController {
         dictDataVE=new Dictionary(pathIndexVE, pathMeaningVE);
         currentDict=dictDataEV;
         mainUI = new MainUI();
+<<<<<<< HEAD
         loadListModelEV();
         loadListModelVE();
         setListModel(modelEV);
@@ -86,15 +86,38 @@ public final class MainUIController {
         });
     }
     public void setBtnSettingAction(){
+=======
+
+        setListWord();
+        /**
+         * Set Settings function
+         */
+>>>>>>> origin/master
         mainUI.setBtnSettingsActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 settingsController = new SettingsUIController();
             }
+<<<<<<< HEAD
         }
         );
     }
     public void setActionSearch(){
+=======
+        });
+        /**
+         * Set Translate Sentences Online function
+         */
+        mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                translateController = new TranslateUIController();
+            }
+        });
+        /**
+         * Set TextField Search KeyListener
+         */
+>>>>>>> origin/master
         mainUI.setTfSearchKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -103,6 +126,7 @@ public final class MainUIController {
 
             @Override
             public void keyPressed(KeyEvent e) {
+                // IF Enter..
                 if (e.getKeyCode() == KeyEvent.VK_ENTER){
                     String value = mainUI.getTfSearch().getText().toLowerCase().trim();
                     boolean isFind = false; // Check have results or not.
@@ -125,10 +149,17 @@ public final class MainUIController {
                 String value = mainUI.getTfSearch().getText().toLowerCase().trim();
                 JList listWords = mainUI.getListIndex();
                 int index;
+<<<<<<< HEAD
                 for ( index  = 0; index < currentDict.getListWord().size(); index ++){
                     String it = currentDict.getListWord().get(index).toLowerCase();
                     if (it.startsWith(value) || it.compareTo(value) > 0){ /// Cho nay sao ay'
                         System.out.println(value);
+=======
+                // Get index of vector and show where this word on JList
+                for ( index  = 0; index < dictData.getListWord().size(); index ++){
+                    String it = dictData.getListWord().get(index).toLowerCase();
+                    if (it.startsWith(value) || it.compareTo(value) > 0){
+>>>>>>> origin/master
                         break;
                     }
                 }
@@ -145,6 +176,9 @@ public final class MainUIController {
                 listWords.scrollRectToVisible(listWords.getCellBounds(index, (int) (index + num)));
             }
         });
+        /**
+         * If click another word, make action : show meaning.
+         */
         mainUI.setListIndexValueChanged(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -158,6 +192,7 @@ public final class MainUIController {
             }
         });
     }
+<<<<<<< HEAD
     public void setBtnVEAction(){
         mainUI.setBtnVEActionListener(new ActionListener() {
 
@@ -200,6 +235,12 @@ public final class MainUIController {
     }
     
     public void loadListModelEV() {
+=======
+    /**
+     * Get word from Vector into JList
+     */
+    public void setListWord() {
+>>>>>>> origin/master
         int i = 0;
         for (Iterator<String> it = dictDataEV.getListWord().iterator(); it.hasNext(); i++) {
             modelEV.add(i, it.next());
