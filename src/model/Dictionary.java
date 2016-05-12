@@ -22,27 +22,27 @@ import java.util.logging.Logger;
  */
 public class Dictionary implements IDictionary {
 
-    public Hashtable<String, Word> mapWord;
-    private final File indexesFile;
-    private final File meansFile;
+    private Hashtable<String, Word> mapWord;
+    private File indexesFile;
+    private File meansFile;
     private Vector<String> words = new Vector<>();
     private static RandomAccessFile raf;
     private static Word word;
     //Constructor 
 
-    public Dictionary() {
+    public Dictionary(String filePathIndex,String filePathDict) {
         // Init hashtable
         this.mapWord = new Hashtable<>();
-        // Indexes file
-        indexesFile = new File(IDictionary.pathIndex);
+        setTypeDictionary(filePathIndex, filePathDict);
+    }
+     public void setTypeDictionary(String filePathIndex,String filePathDict){
+        indexesFile = new File(filePathIndex);
         // Meanning file
-        meansFile = new File(IDictionary.pathMeaning);
+        meansFile = new File(filePathDict);
         // Init random access file
-
         // Load index file 
         loadIndex();
-    }
-
+     }
     public void loadIndex() {
 
         long begin = System.currentTimeMillis();
@@ -74,10 +74,12 @@ public class Dictionary implements IDictionary {
                         mapWord.put(elements[0], word);
                     }
                 }
+                
             }
         } catch (IOException ioe) {
             System.out.println("Error IO " + ioe.getMessage());;
         }
+        for(int i=0;i<29;i++) words.remove(0);
         long end = System.currentTimeMillis();
         System.out.println("Load indexes file took " + (end - begin) + " ms");
     }
@@ -109,6 +111,7 @@ public class Dictionary implements IDictionary {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        
         return meaning;
     }
 
@@ -120,5 +123,17 @@ public class Dictionary implements IDictionary {
     public Vector<String> getListWord() {
         return words;
 
+    }
+     public String getPathIndexAV(){
+         return IDictionary.pathIndexAV;
+     }
+    public String getPathIndexVA(){
+        return IDictionary.pathIndexVA;
+    }
+    public String getPathDictAV(){
+        return IDictionary.pathMeaningAV;
+    }
+    public String getPathDictVA(){
+        return IDictionary.pathMeaningVA;
     }
 }

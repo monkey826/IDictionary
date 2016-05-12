@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -26,16 +29,21 @@ public interface IMainUI {
     public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener evt);
 
 
-    public void setBtnPrevEntryActionListener(java.awt.event.ActionListener evt);
+    public void setBtnVEActionListener(java.awt.event.ActionListener evt);
 
-    public void setBtnNextEntryActionListener(java.awt.event.ActionListener evt);
+    public void setBtnEVActionListener(java.awt.event.ActionListener evt);
 
-    public void setBtnListenActionListener(java.awt.event.ActionListener evt);
+    
 
     public void setBtnCopyActionListener(java.awt.event.ActionListener evt);
 
     public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt);
+    
+    public void setBtnSoundActionListener(ActionListener evt);
+    public void setBtnListenActionListener(ActionListener listener);
+    public void setTaMeaningAction(MouseAdapter listener);
     public JList getListIndex();
     public JTextArea getTaMeaning();
     public JTextField getTfSearch();
+    public JLabel getLabelWord();
 }
