@@ -72,14 +72,16 @@ public class QuickViewUI extends javax.swing.JFrame implements IQuickViewUI{
 
         jScrollPane1.setViewportView(taMeaning);
 
-        btnPre.setText("Preview");
+        btnPre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
+        btnPre.setToolTipText("Find near word previous this word");
         btnPre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPreActionPerformed(evt);
             }
         });
 
-        btnNext.setText("Next");
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/forward.png"))); // NOI18N
+        btnNext.setToolTipText("Find near word next this word");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,7 +91,7 @@ public class QuickViewUI extends javax.swing.JFrame implements IQuickViewUI{
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(lbWord, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(btnPre)
                 .addGap(18, 18, 18)
                 .addComponent(btnNext)

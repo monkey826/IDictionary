@@ -46,8 +46,8 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         jPanel1 = new javax.swing.JPanel();
         lbFontStyle = new javax.swing.JLabel();
         lbFontSize = new javax.swing.JLabel();
-        cbbFontStyle = new javax.swing.JComboBox<String>();
-        cbbFontSize = new javax.swing.JComboBox<String>();
+        cbbFontStyle = new javax.swing.JComboBox<>();
+        cbbFontSize = new javax.swing.JComboBox<>();
         ccFontColor = new javax.swing.JColorChooser();
         btnSaveFont = new javax.swing.JButton();
         btnCancelFont = new javax.swing.JButton();
@@ -56,8 +56,10 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Settings dictionary");
 
+        btnSaveLanguage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/save.png"))); // NOI18N
         btnSaveLanguage.setText("Save");
 
+        btnCancelLanguage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/no.png"))); // NOI18N
         btnCancelLanguage.setText("Cancel");
         btnCancelLanguage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +87,7 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(423, 423, 423)
-                .addComponent(btnSaveLanguage, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                .addComponent(btnSaveLanguage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelLanguage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(45, 45, 45))
@@ -97,7 +99,7 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
                         .addComponent(btnVietnamese)
                         .addGap(26, 26, 26)
                         .addComponent(btnEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,12 +123,14 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
 
         lbFontSize.setText("Font Size");
 
-        cbbFontStyle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbFontStyle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbbFontSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbFontSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnSaveFont.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/save.png"))); // NOI18N
         btnSaveFont.setText("Save");
 
+        btnCancelFont.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/no.png"))); // NOI18N
         btnCancelFont.setText("Cancel");
 
         lbFontColor.setText("Font Color");
@@ -149,7 +153,7 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSaveFont, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSaveFont, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelFont)
                         .addGap(42, 42, 42))))
@@ -159,7 +163,7 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lbFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +178,7 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
                     .addComponent(cbbFontStyle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ccFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -236,7 +240,7 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         btnCancelFont.setText("Hủy bỏ");
         btnCancelLanguage.setText("Hủy bỏ");
         btnSaveFont.setText("Lưu");
-        btnSaveLanguage.setText("lưu");
+        btnSaveLanguage.setText("Lưu");
         //lbTitle.setText("Chọn ngôn ngữ hiển thị");
         setTitle("Cài đặt");
         this.repaint();

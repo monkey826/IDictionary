@@ -11,10 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,13 +21,12 @@ import java.util.logging.Logger;
  */
 public class Dictionary implements IDictionary {
 
-    private Hashtable<String, Word> mapWord;
-    private Vector<String> words = new Vector<>();
+    private Vector<Word> words = new Vector<>();
     private int type;//type of dictionary(VE is 2- or EV is 1)
     //construct
     public Dictionary(int type) {
         // Init hashtable
-        this.mapWord = new Hashtable<>();
+//        this.mapWord = new Hashtable<>();
         //setTypeDictionary(filePathIndex, filePathDict);
         this.type=type;
         loadIndex();
@@ -63,11 +61,10 @@ public class Dictionary implements IDictionary {
                         int offset = base64ToBase10(elements[1]);
                         int length = base64ToBase10(elements[2]);
                         // Add to vector words.
-                        words.add(elements[0]);
                         // Create a new word;
                         Word word = new Word(elements[0], offset, length);
                         // Add to hashtable;
-                        mapWord.put(elements[0], word);
+                        words.add(word);
                     }
                 }
                 
@@ -100,7 +97,7 @@ public class Dictionary implements IDictionary {
         String meaning = "";
         try {
             raf = new RandomAccessFile(new File(filePathDict), "r");
-            Word wordSearch = mapWord.get(word);
+            Word wordSearch = getWord(word);
             for (int i = 0; i < wordSearch.getLength(); i++) {
                 byte[] buff = new byte[wordSearch.getLength()];
                 raf.seek(wordSearch.getOffset());
@@ -115,13 +112,22 @@ public class Dictionary implements IDictionary {
         
         return meaning;
     }
-
+    public Word getWord(String wordSource){
+        Word word = null;
+        Iterator it = words.iterator();
+        while (it.hasNext()){
+            word = (Word) it.next();
+            if (word.getWord().equals(wordSource))
+                return word;
+        }
+        return word;
+    }
     /**
      *
      * @return
      */
     @Override
-    public Vector<String> getListWord() {
+    public Vector<Word> getListWord() {
         return words;
 
     }

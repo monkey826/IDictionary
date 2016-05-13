@@ -126,11 +126,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" pref="209" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="200" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="lbListResults" min="-2" pref="20" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" pref="210" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="201" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -170,10 +170,8 @@
                           <Component id="btnListen" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnPrint" min="-2" pref="70" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnCopy" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="lbToolTip" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="lbToolTip" min="-2" pref="313" max="-2" attributes="0"/>
                           <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -183,9 +181,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnListen" alignment="0" pref="68" max="32767" attributes="0"/>
+                              <Component id="btnListen" alignment="0" max="32767" attributes="0"/>
                               <Component id="lbToolTip" alignment="1" max="32767" attributes="0"/>
-                              <Component id="btnCopy" max="32767" attributes="0"/>
                               <Component id="btnPrint" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="btnVE" min="-2" max="-2" attributes="0"/>
@@ -202,12 +199,12 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnVE">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/icon/vietnam_flag.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Viet-Eng"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Previous entry"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Using Vietnamese - English Dictionary"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVEActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbToolTip">
                   <Properties>
@@ -216,20 +213,12 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnEV">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Eng-Viet"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Next Entry"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnCopy">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Copy"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/icon/united_states_of_america.png"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="Eng-Viet"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Using English - Vietnamese Dictionary"/>
                   </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnListen">
                   <Properties>
@@ -258,9 +247,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="btnTranslateSentence" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnExport" min="-2" pref="107" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="406" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="483" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -268,10 +255,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnTranslateSentence" alignment="3" pref="42" max="32767" attributes="0"/>
-                              <Component id="btnExport" alignment="3" pref="42" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="btnTranslateSentence" pref="68" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -280,12 +264,10 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnTranslateSentence">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/icon/bing_alt_1.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Translate Sentence"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnExport">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Export "/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -304,10 +286,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnHelpContents" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnAbout" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="408" max="32767" attributes="0"/>
+                          <Component id="btnHelpContents" min="-2" pref="146" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnAbout" min="-2" pref="146" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="338" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -315,9 +297,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnHelpContents" pref="68" max="32767" attributes="0"/>
-                              <Component id="btnAbout" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnHelpContents" alignment="3" pref="68" max="32767" attributes="0"/>
+                              <Component id="btnAbout" alignment="3" pref="68" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -327,6 +309,9 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnAbout">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/icon/info.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="About"/>
                   </Properties>
                   <AuxValues>
@@ -335,6 +320,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnHelpContents">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/icon/system_help.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Help Contents"/>
                   </Properties>
                   <Events>
@@ -437,6 +425,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnSettings">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon/setting1.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Settings"/>
           </Properties>
         </Component>
@@ -468,6 +459,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnSound">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/audio.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="sounds"/>
               </Properties>
               <Events>

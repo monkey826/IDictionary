@@ -42,7 +42,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="lbWord" min="-2" pref="129" max="-2" attributes="0"/>
-                  <EmptySpace pref="82" max="32767" attributes="0"/>
+                  <EmptySpace pref="114" max="32767" attributes="0"/>
                   <Component id="btnPre" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnNext" min="-2" max="-2" attributes="0"/>
@@ -81,7 +81,10 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnPre">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Preview"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon/back.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Find near word previous this word"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreActionPerformed"/>
@@ -89,7 +92,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnNext">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Next"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon/forward.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Find near word next this word"/>
           </Properties>
         </Component>
       </SubComponents>

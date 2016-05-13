@@ -21,6 +21,10 @@ public class Word implements IWord{
         this.offset = offset;
         this.length = length;
     }
+    @Override
+    public String getWord(){
+        return word;
+    }
     /**
      * (non-Javadoc)
      * @see model.IWord#getOffset() 
@@ -37,4 +41,5 @@ public class Word implements IWord{
     public int getLength(){
         return length;
     }
+    
 }

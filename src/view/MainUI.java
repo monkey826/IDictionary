@@ -62,23 +62,21 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         btnVE = new javax.swing.JButton();
         lbToolTip = new javax.swing.JLabel();
         btnEV = new javax.swing.JButton();
-        btnCopy = new javax.swing.JButton();
         btnListen = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
         pnelTool = new javax.swing.JPanel();
         btnTranslateSentence = new javax.swing.JButton();
-        btnExport = new javax.swing.JButton();
         pnelHelp = new javax.swing.JPanel();
         btnAbout = new javax.swing.JButton();
         btnHelpContents = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listIndex = new javax.swing.JList<String>();
+        listIndex = new javax.swing.JList<>();
         tfSearch = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
         lbListWords = new javax.swing.JLabel();
         lbListResults = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        listResults = new javax.swing.JList<String>();
+        listResults = new javax.swing.JList<>();
         btnSettings = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbWord = new javax.swing.JLabel();
@@ -108,21 +106,15 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IDictionary ");
 
+        btnVE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vietnam_flag.png"))); // NOI18N
         btnVE.setText("Viet-Eng");
-        btnVE.setToolTipText("Previous entry");
-        btnVE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVEActionPerformed(evt);
-            }
-        });
+        btnVE.setToolTipText("Using Vietnamese - English Dictionary");
 
         lbToolTip.setText("jLabel1");
 
+        btnEV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/united_states_of_america.png"))); // NOI18N
         btnEV.setText("Eng-Viet");
-        btnEV.setToolTipText("Next Entry");
-
-        btnCopy.setText("Copy");
-        btnCopy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEV.setToolTipText("Using English - Vietnamese Dictionary");
 
         btnListen.setText("Listen");
 
@@ -141,10 +133,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                 .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbToolTip, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbToolTip, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         pnelDictionaryLayout.setVerticalGroup(
@@ -152,9 +142,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
             .addGroup(pnelDictionaryLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnListen, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                    .addComponent(btnListen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbToolTip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCopy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnelDictionaryLayout.createSequentialGroup()
                         .addComponent(btnVE)
@@ -166,9 +155,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
 
         jTabbedPane1.addTab("Dictionary & Culture", pnelDictionary);
 
+        btnTranslateSentence.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bing_alt_1.png"))); // NOI18N
         btnTranslateSentence.setText("Translate Sentence");
-
-        btnExport.setText("Export ");
 
         javax.swing.GroupLayout pnelToolLayout = new javax.swing.GroupLayout(pnelTool);
         pnelTool.setLayout(pnelToolLayout);
@@ -177,24 +165,22 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
             .addGroup(pnelToolLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(btnTranslateSentence)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 406, Short.MAX_VALUE))
+                .addGap(0, 483, Short.MAX_VALUE))
         );
         pnelToolLayout.setVerticalGroup(
             pnelToolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnelToolLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnelToolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTranslateSentence, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(btnExport, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addComponent(btnTranslateSentence, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Tools", pnelTool);
 
+        btnAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/info.png"))); // NOI18N
         btnAbout.setText("About");
 
+        btnHelpContents.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/system_help.png"))); // NOI18N
         btnHelpContents.setText("Help Contents");
         btnHelpContents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,27 +194,27 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
             pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnelHelpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnHelpContents, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 408, Short.MAX_VALUE))
+                .addComponent(btnHelpContents, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 338, Short.MAX_VALUE))
         );
         pnelHelpLayout.setVerticalGroup(
             pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnelHelpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHelpContents, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Help", pnelHelp);
 
-        listIndex.setModel(new javax.swing.AbstractListModel() {
+        listIndex.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listIndex);
 
@@ -246,15 +232,17 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         lbListResults.setText("Results");
         lbListResults.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        listResults.setModel(new javax.swing.AbstractListModel() {
+        listResults.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(listResults);
 
+        btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/setting1.png"))); // NOI18N
         btnSettings.setText("Settings");
 
+        btnSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/audio.png"))); // NOI18N
         btnSound.setText("sounds");
         btnSound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,6 +269,17 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         );
 
         jScrollPane4.setViewportView(taMeaning);
+
+        jDesktopPane1.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lbSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lbListWords, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lbListResults, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnSettings, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -328,27 +327,17 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbListResults, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4)))
                 .addGap(2, 2, 2))
         );
-        jDesktopPane1.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(tfSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lbSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lbListWords, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lbListResults, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnSettings, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -374,10 +363,6 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSoundActionPerformed
     
-    private void btnVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVEActionPerformed
-
     private void btnHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpContentsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHelpContentsActionPerformed
@@ -388,39 +373,39 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }                                      
 
     @Override
-    public void setTfSearchKeyListener(java.awt.event.KeyListener evt) {                                     
+    public void setTfSearchKeyListener(java.awt.event.KeyListener listener) {                                     
         // TODO add your handling code here:
-        this.tfSearch.addKeyListener(evt);
+        this.tfSearch.addKeyListener(listener);
     }                                    
 
          
     @Override
-    public void setBtnSettingsActionListener(java.awt.event.ActionListener evt) {                                            
+    public void setBtnSettingsActionListener(java.awt.event.ActionListener listener) {                                            
         // TODO add your handling code here:
-        this.btnSettings.addActionListener(evt);
+        this.btnSettings.addActionListener(listener);
     }                                           
 
     @Override
-    public void setBtnPrintActionListener(java.awt.event.ActionListener evt) {                                         
+    public void setBtnPrintActionListener(java.awt.event.ActionListener listener) {                                         
         // TODO add your handling code here:
-        this.btnPrint.addActionListener(evt);
+        this.btnPrint.addActionListener(listener);
     }                                        
 
     @Override
-    public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener evt) {                                                     
-        this.btnTranslateSentence.addActionListener(evt);
+    public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener listener) {                                                     
+        this.btnTranslateSentence.addActionListener(listener);
     }                                                    
 
     @Override
-    public void setBtnVEActionListener(java.awt.event.ActionListener evt) {                                             
+    public void setBtnVEActionListener(java.awt.event.ActionListener listener) {                                             
         // TODO add your handling code here:
-        this.btnVE.addActionListener(evt);
+        this.btnVE.addActionListener(listener);
     }                                            
 
     @Override
-    public void setBtnEVActionListener(java.awt.event.ActionListener evt) {                                             
+    public void setBtnEVActionListener(java.awt.event.ActionListener listener) {                                             
         // TODO add your handling code here:
-        this.btnEV.addActionListener(evt);
+        this.btnEV.addActionListener(listener);
     }                                            
 
     @Override
@@ -430,22 +415,16 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }                                         
 
     @Override
-    public void setBtnCopyActionListener(java.awt.event.ActionListener evt) {                                        
+    public void setBtnHelpContentsActionListener(java.awt.event.ActionListener listener) {                                                
         // TODO add your handling code here:
-        this.btnCopy.addActionListener(evt);
-    }                                       
-
-    @Override
-    public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt) {                                                
-        // TODO add your handling code here:
-        this.btnHelpContents.addActionListener(evt);
+        this.btnHelpContents.addActionListener(listener);
     }  
     @Override
-    public void setBtnAboutActionListener(java.awt.event.ActionListener evt) {
-        this.btnAbout.addActionListener(evt);
+    public void setBtnAboutActionListener(java.awt.event.ActionListener listener) {
+        this.btnAbout.addActionListener(listener);
     }
-    public void setBtnSoundActionListener(ActionListener evt){
-        btnSound.addActionListener(evt);
+    public void setBtnSoundActionListener(ActionListener listener){
+        btnSound.addActionListener(listener);
     }
     public void setTaMeaningAction(MouseAdapter listener){
         taMeaning.addMouseListener(listener);
@@ -476,11 +455,10 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
      public void updateUI(){
          this.repaint();
      }
+    @Override
     public void setTextEng(){
         btnAbout.setText("About");
-        btnCopy.setText("Copy");
         btnEV.setText("Eng-Viet");
-        btnExport.setText("Export");
         btnHelpContents.setText("Help Contents");
         btnListen.setText("Listen");
         btnPrint.setText("Print");
@@ -492,14 +470,12 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         pnelDictionary.setName("Dictionary & Culture");
         pnelHelp.setName("Help");
         pnelTool.setName("Tool");
-        this.repaint();
+//        this.repaint();
        
     }
     public void setTextViet(){
         btnAbout.setText("Thông tin");
-        btnCopy.setText("Sao chép");
         btnEV.setText("Anh-Việt");
-        btnExport.setText("Xuất");
         btnHelpContents.setText("Trợ giúp");
         btnListen.setText("Nghe");
         btnPrint.setText("In");
@@ -511,7 +487,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         pnelDictionary.setName("Chọn từ điển");
         pnelHelp.setName("Trợ giúp");
         pnelTool.setName("Công cụ");
-         this.repaint();
+//         this.repaint();
     }
     
 
@@ -540,9 +516,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAbout;
-    public javax.swing.JButton btnCopy;
     private javax.swing.JButton btnEV;
-    private javax.swing.JButton btnExport;
     private javax.swing.JButton btnHelpContents;
     private javax.swing.JButton btnListen;
     private javax.swing.JButton btnPrint;

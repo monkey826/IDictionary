@@ -18,30 +18,29 @@ import javax.swing.JTextPane;
  * @author Monkey
  */
 public interface IMainUI {
-    public void setListIndexValueChanged(javax.swing.event.ListSelectionListener evt);
+    public void setListIndexValueChanged(javax.swing.event.ListSelectionListener listener);
 
-    public void setTfSearchKeyListener(java.awt.event.KeyListener evt);
+    public void setTfSearchKeyListener(java.awt.event.KeyListener listener);
 
-    public void setBtnSettingsActionListener(java.awt.event.ActionListener evt);                                           
+    public void setBtnSettingsActionListener(java.awt.event.ActionListener listener);                                           
 
-    public void setBtnPrintActionListener(java.awt.event.ActionListener evt);
-    public void setBtnAboutActionListener(java.awt.event.ActionListener evt);
+    public void setBtnPrintActionListener(java.awt.event.ActionListener listener);
+    public void setBtnAboutActionListener(java.awt.event.ActionListener listener);
 
-    public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener evt);
+    public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener listener);
 
 
-    public void setBtnVEActionListener(java.awt.event.ActionListener evt);
+    public void setBtnVEActionListener(java.awt.event.ActionListener listener);
 
-    public void setBtnEVActionListener(java.awt.event.ActionListener evt);
+    public void setBtnEVActionListener(java.awt.event.ActionListener listener);
 
     
 
-    public void setBtnCopyActionListener(java.awt.event.ActionListener evt);
 
-    public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt);
+    public void setBtnHelpContentsActionListener(java.awt.event.ActionListener listener);
     public void setStateEV();
     public void setStateVE();
-    public void setBtnSoundActionListener(ActionListener evt);
+    public void setBtnSoundActionListener(ActionListener listener);
     public void setBtnListenActionListener(ActionListener listener);
     public void setTaMeaningAction(MouseAdapter listener);
     public JList getListIndex();

@@ -5,27 +5,25 @@
  */
 package controller;
 
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringReader;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.StringTokenizer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Dictionary;
@@ -35,6 +33,8 @@ import view.MainUI;
 import javax.speech.*;
 import java.util.*;
 import javax.speech.synthesis.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -84,6 +84,21 @@ public final class MainUIController {
         setTaMeaningAction();
         setBtnEVAction();
         setBtnVEAction();
+        setAboutAction();
+    }
+    public void setAboutAction(){
+        mainUI.setBtnAboutActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Icon icon = new ImageIcon(MainUIController.class.getResource("/icon/get_info.png"));
+                System.out.println(icon);
+                JOptionPane.showMessageDialog(null, "This program was powered by Java \n"
+                        + "Authors: Đào Nam Tiến & Nguyễn Thúc Huynh \n"
+                        + "University: Ha Noi University of Science and Technology. \n"
+                        + "Release: Version 1.0 \n"
+                        + "Time: 10/5/2016", "About us !", JOptionPane.INFORMATION_MESSAGE,icon );
+            }
+        });
     }
     public void setBtnTranslateAction(){
         mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
@@ -125,9 +140,9 @@ public final class MainUIController {
                 String value = mainUI.getTfSearch().getText().toLowerCase().trim();
                 JList listWords = mainUI.getListIndex();
                 int index;
-                Vector<String> vectorResult=currentDict.getListWord();
+                Vector<model.Word> vectorResult=currentDict.getListWord();
                 for ( index  = 0; index < vectorResult.size(); index ++){
-                    String it = vectorResult.get(index).toLowerCase();
+                    String it = vectorResult.get(index).getWord().toLowerCase();
                     if (it.startsWith(value) || it.compareTo(value) > 0){ 
                         System.out.println(value);
                         break;
@@ -150,9 +165,10 @@ public final class MainUIController {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int index = mainUI.getListIndex().getSelectedIndex();
-                Vector<String> vectorResult=currentDict.getListWord();
+                
+                Vector<model.Word> vectorResult=currentDict.getListWord();
                 if (index != -1 ){
-                    String value = vectorResult.get(index);
+                    String value = vectorResult.get(index).getWord();
                     String meaning = currentDict.loadMeaning(value);
                     mainUI.getLabelWord().setText(value);
                     //set style for string mean to show
@@ -194,7 +210,7 @@ public final class MainUIController {
                 String value="";
                 int index = mainUI.getListIndex().getSelectedIndex();
                 
-                value = currentDict.getListWord().get(index);
+                value = currentDict.getListWord().get(index).getWord();
                 
                 doSpeak(value, "kevin16");
             }
@@ -203,8 +219,8 @@ public final class MainUIController {
     
     public void loadListModelEV() {
         int i = 0;
-        for (Iterator<String> it = dictDataEV.getListWord().iterator(); it.hasNext(); i++) {
-            modelEV.add(i, it.next());
+        for (Iterator<model.Word> it = dictDataEV.getListWord().iterator(); it.hasNext(); i++) {
+            modelEV.add(i, it.next().getWord());
         }
     }
     public void setListModel(DefaultListModel model){
@@ -212,8 +228,8 @@ public final class MainUIController {
     }
     public void loadListModelVE() {
         int i = 0;
-        for (Iterator<String> it = dictDataVE.getListWord().iterator(); it.hasNext(); i++) {
-            modelVE.add(i, it.next());
+        for (Iterator<model.Word> it = dictDataVE.getListWord().iterator(); it.hasNext(); i++) {
+            modelVE.add(i, it.next().getWord());
         }
        
     }
@@ -290,10 +306,10 @@ public final class MainUIController {
     public long searchWord(String word,IDictionary dict){
         
         // Loops to find where this word on dictionary
-        Vector<String> vectorResult=dict.getListWord();
+        Vector<model.Word> vectorResult=dict.getListWord();
         int size=dict.getListWord().size();
         for (int index = 0 ; index < size; index ++){
-            if(vectorResult.get(index).toLowerCase().equals(word)) return index;
+            if(vectorResult.get(index).getWord().toLowerCase().equals(word)) return index;
         }
         return -1;
     }
