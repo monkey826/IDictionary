@@ -41,7 +41,8 @@ public class TextPaneController {
                 while((line=reader.readLine())!=null){
                     //System.out.println(line);
                     if(line.contains("/")){
-                        line="<h1><b color = \"red\" >"+line+"</b></h1>";
+                        //line="<h1><b color = \"red\" >"+line+"</b></h1>";
+                        line= "<img src=\"" + this.getClass().getClassLoader().getResource("icon/spellicon.png").toString()+"\"/>.....";
                         newMean=newMean+line+"<br/>";
                     }
                     else if(line.contains("*")){

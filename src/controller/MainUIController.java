@@ -35,6 +35,9 @@ import view.MainUI;
 import javax.speech.*;
 import java.util.*;
 import javax.speech.synthesis.*;
+import model.ManageStatus;
+import model.Status;
+
 
 /**
  *
@@ -53,9 +56,11 @@ public final class MainUIController {
     private QuickViewUIController quickViewUIController;
     private IDictionary currentDict;
     private TextPaneController textPaneController;
+    private ManageStatus manageStatus;
 
     public MainUIController() {
         //load data
+        manageStatus=new ManageStatus();
         copyFile();
         dictDataEV = new Dictionary(1);
         modelEV=new DefaultListModel();
@@ -65,6 +70,7 @@ public final class MainUIController {
         modelVE=new DefaultListModel();
         loadListModelVE();
         
+        
         mainUI = new MainUI();
         soundParagraphController=new SoundParagraphController(this);
         quickViewUIController=new QuickViewUIController();
@@ -72,9 +78,12 @@ public final class MainUIController {
         settingsController=new SettingsUIController(this);
         translateController=new TranslateUIController();
         //set First display:
-        currentDict=dictDataEV;
-        setListModel(modelEV);
         
+        
+        //load last work
+        loadLastWorking();
+        
+        ///////////////////
         //set Action:
         setSounds();
         setActionSearch();
@@ -84,6 +93,23 @@ public final class MainUIController {
         setTaMeaningAction();
         setBtnEVAction();
         setBtnVEAction();
+    }
+    public void loadLastWorking(){
+        if(manageStatus.getStatus().getTypeDictionary()==2){
+            currentDict=dictDataVE;
+            setListModel(modelVE);
+        }
+        else{
+            currentDict=dictDataEV;
+            setListModel(modelEV);
+        } 
+        if(manageStatus.getStatus().getLanguageDisplay()==2){
+            setTextVietNam();
+            mainUI.updateUI();
+            mainUI.displayUI();
+        }
+        else mainUI.displayUI();
+       
     }
     public void setBtnTranslateAction(){
         mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
