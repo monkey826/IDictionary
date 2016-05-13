@@ -21,7 +21,7 @@ public class TextPaneController {
     private String colorWordType;
     private String colorWordMean;
     private String colorPhrase;
-    
+//    private String pathIcon =  System.getProperty("user.dir") + "\\src\\icon\\h1.png";
     public String setStyleMean(String mean,String word){
         String meanStyle="";
         String newMean="";
@@ -41,15 +41,16 @@ public class TextPaneController {
                 while((line=reader.readLine())!=null){
                     //System.out.println(line);
                     if(line.contains("/")){
-                        line="<h1><b color = \"red\" >"+line+"</b></h1>";
+                        line="<span><b color = \"red\" >"+line+"</b></span>" ;
+                        System.out.println(line);
                         newMean=newMean+line+"<br/>";
                     }
                     else if(line.contains("*")){
-                        line="<h2><b><i><color=\"blue\">"+line+"</i></b></h2>";
+                        line="<span><b><i><color=\"blue\">"+line+"</i></b></span>";
                         newMean=newMean+line+"<br/>";
                     }
                     else if(line.contains("-")){
-                         line="<h3><color=\"blue\">"+line+"</h3>";
+                         line="<span><color=\"blue\">"+line+"</span>";
                          newMean=newMean+line+"<br/>";
                     }
                     else if(line.contains("=")){
@@ -57,8 +58,8 @@ public class TextPaneController {
                          String linePre=line.substring(0, pos);
                          String lineNext=line.substring(pos+1, line.length());
                          //System.out.println(linePre+":"+lineNext);
-                         line="<h4><b color=\"red\">"+line+"</b></h4>";
-                         newMean=newMean+"<h4><b><color=\"red\">"+linePre+":"+lineNext+"</b></h4>"+"<br/>";
+                         line="<span><b color=\"red\">"+line+"</b></span>";
+                         newMean=newMean+"<span><b><color=\"red\">"+linePre+":"+lineNext+"</b></span>"+"<br/>";
                     }
                     else {
                          newMean=newMean+line+"<br/>";
@@ -70,7 +71,7 @@ public class TextPaneController {
             }
             
         }
-        return newMean;
+        return newMean ;
     }
     
     public int getPostionCharacter(String line){

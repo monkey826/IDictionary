@@ -16,7 +16,7 @@ public interface IDictionary {
     public final String pathMeaningEV = System.getProperty("user.dir").concat("/data/anhviet109K.dict");
     public final String pathIndexVE = System.getProperty("user.dir").concat("/data/vietanh.index");
     public final String pathMeaningVE = System.getProperty("user.dir").concat("/data/vietanh.dict");
-    public Vector<String> getListWord();
+    public Vector<Word> getListWord();
     public void loadIndex();
     public String loadMeaning(String word);    
 }
