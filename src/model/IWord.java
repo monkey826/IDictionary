@@ -20,4 +20,9 @@ public interface IWord {
      * @return length
      */
     public int getLength();
+    /**
+     * 
+     * @return 
+     */
+    public String getWord();
 }

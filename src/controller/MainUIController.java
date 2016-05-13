@@ -151,9 +151,9 @@ public final class MainUIController {
                 String value = mainUI.getTfSearch().getText().toLowerCase().trim();
                 JList listWords = mainUI.getListIndex();
                 int index;
-                Vector<String> vectorResult=currentDict.getListWord();
+                Vector<model.Word> vectorResult=currentDict.getListWord();
                 for ( index  = 0; index < vectorResult.size(); index ++){
-                    String it = vectorResult.get(index).toLowerCase();
+                    String it = vectorResult.get(index).getWord().toLowerCase();
                     if (it.startsWith(value) || it.compareTo(value) > 0){ 
                         System.out.println(value);
                         break;
@@ -176,9 +176,9 @@ public final class MainUIController {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int index = mainUI.getListIndex().getSelectedIndex();
-                Vector<String> vectorResult=currentDict.getListWord();
+                Vector<model.Word> vectorResult=currentDict.getListWord();
                 if (index != -1 ){
-                    String value = vectorResult.get(index);
+                    String value = vectorResult.get(index).getWord();
                     String meaning = currentDict.loadMeaning(value);
                     mainUI.getLabelWord().setText(value);
                     //set style for string mean to show
@@ -220,7 +220,7 @@ public final class MainUIController {
                 String value="";
                 int index = mainUI.getListIndex().getSelectedIndex();
                 
-                value = currentDict.getListWord().get(index);
+                value = currentDict.getListWord().get(index).getWord();
                 
                 doSpeak(value, "kevin16");
             }
@@ -229,8 +229,8 @@ public final class MainUIController {
     
     public void loadListModelEV() {
         int i = 0;
-        for (Iterator<String> it = dictDataEV.getListWord().iterator(); it.hasNext(); i++) {
-            modelEV.add(i, it.next());
+        for (Iterator<model.Word> it = dictDataEV.getListWord().iterator(); it.hasNext(); i++) {
+            modelEV.add(i, it.next().getWord());
         }
     }
     public void setListModel(DefaultListModel model){
@@ -238,8 +238,8 @@ public final class MainUIController {
     }
     public void loadListModelVE() {
         int i = 0;
-        for (Iterator<String> it = dictDataVE.getListWord().iterator(); it.hasNext(); i++) {
-            modelVE.add(i, it.next());
+        for (Iterator<model.Word> it = dictDataVE.getListWord().iterator(); it.hasNext(); i++) {
+            modelVE.add(i, it.next().getWord());
         }
        
     }
@@ -316,10 +316,10 @@ public final class MainUIController {
     public long searchWord(String word,IDictionary dict){
         
         // Loops to find where this word on dictionary
-        Vector<String> vectorResult=dict.getListWord();
+        Vector<model.Word> vectorResult=dict.getListWord();
         int size=dict.getListWord().size();
         for (int index = 0 ; index < size; index ++){
-            if(vectorResult.get(index).toLowerCase().equals(word)) return index;
+            if(vectorResult.get(index).getWord().toLowerCase().equals(word)) return index;
         }
         return -1;
     }
