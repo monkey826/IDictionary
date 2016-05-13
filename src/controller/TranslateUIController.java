@@ -58,4 +58,17 @@ public class TranslateUIController {
             }
         });
     }
+    public void setTextEnglish(){
+        translateUI.setTextEnglish();
+        
+    }
+    public void setTextVietNam(){
+        translateUI.setTextVietnamese();
+    }
+    public void displayUI(){
+        translateUI.displayUI();
+    }
+    public void hideUI(){
+        translateUI.hideUI();
+    }
 }

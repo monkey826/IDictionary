@@ -11,12 +11,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringReader;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.StringTokenizer;
@@ -45,30 +47,36 @@ public final class MainUIController {
     private IDictionary dictDataVE;
     private SettingsUIController settingsController;
     private TranslateUIController translateController;
-    private DefaultListModel modelEV = new DefaultListModel();
-    private DefaultListModel modelVE = new DefaultListModel();
+    private DefaultListModel modelEV;
+    private DefaultListModel modelVE;
     private SoundParagraphController soundParagraphController;
     private QuickViewUIController quickViewUIController;
     private IDictionary currentDict;
-    
-    public final String pathIndexEV = System.getProperty("user.dir").concat("/data/anhviet109K.index");
-    public final String pathMeaningEV = System.getProperty("user.dir").concat("/data/anhviet109K.dict");
-    public final String pathIndexVE = System.getProperty("user.dir").concat("/data/vietanh.index");
-    public final String pathMeaningVE = System.getProperty("user.dir").concat("/data/vietanh.dict");
+    private TextPaneController textPaneController;
 
     public MainUIController() {
-
-        dictDataEV = new Dictionary(pathIndexEV,pathMeaningEV);
-        dictDataVE=new Dictionary(pathIndexVE, pathMeaningVE);
-        currentDict=dictDataEV;
-        mainUI = new MainUI();
-        loadListModelEV();
-        loadListModelVE();
-        setListModel(modelEV);
+        //load data
         copyFile();
-        setSounds();
+        dictDataEV = new Dictionary(1);
+        modelEV=new DefaultListModel();
+        loadListModelEV();
+        
+        dictDataVE=new Dictionary(2);
+        modelVE=new DefaultListModel();
+        loadListModelVE();
+        
+        mainUI = new MainUI();
         soundParagraphController=new SoundParagraphController(this);
         quickViewUIController=new QuickViewUIController();
+        textPaneController=new TextPaneController();
+        settingsController=new SettingsUIController(this);
+        translateController=new TranslateUIController();
+        //set First display:
+        currentDict=dictDataEV;
+        setListModel(modelEV);
+        
+        //set Action:
+        setSounds();
         setActionSearch();
         setBtnTranslateAction();
         setBtnSettingAction();
@@ -81,7 +89,7 @@ public final class MainUIController {
         mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                translateController = new TranslateUIController();
+                translateController.displayUI();
             }
         });
     }
@@ -89,7 +97,7 @@ public final class MainUIController {
         mainUI.setBtnSettingsActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                settingsController = new SettingsUIController();
+                settingsController.displayUI();
             }
         }
         );
@@ -105,16 +113,8 @@ public final class MainUIController {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER){
                     String value = mainUI.getTfSearch().getText().toLowerCase().trim();
-                    boolean isFind = false; // Check have results or not.
-                    // Loops to find where this word on dictionary
-                    for (int index = 0 ; index < currentDict.getListWord().size(); index ++){
-                        String it = currentDict.getListWord().get(index).toLowerCase();
-                        if (it.startsWith(value)){
-                            isFind = true; // If find, break loops 
-                            break;
-                        }
-                    }
-                    if (isFind == false)
+                    long index=searchWord(value,currentDict);
+                    if(index==-1)
                         JOptionPane.showMessageDialog(null, "This word \"" + value + "\" "
                                 + "doesn't existed in dictionary.","Search failed",JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -125,9 +125,10 @@ public final class MainUIController {
                 String value = mainUI.getTfSearch().getText().toLowerCase().trim();
                 JList listWords = mainUI.getListIndex();
                 int index;
-                for ( index  = 0; index < currentDict.getListWord().size(); index ++){
-                    String it = currentDict.getListWord().get(index).toLowerCase();
-                    if (it.startsWith(value) || it.compareTo(value) > 0){ /// Cho nay sao ay'
+                Vector<String> vectorResult=currentDict.getListWord();
+                for ( index  = 0; index < vectorResult.size(); index ++){
+                    String it = vectorResult.get(index).toLowerCase();
+                    if (it.startsWith(value) || it.compareTo(value) > 0){ 
                         System.out.println(value);
                         break;
                     }
@@ -149,10 +150,12 @@ public final class MainUIController {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int index = mainUI.getListIndex().getSelectedIndex();
+                Vector<String> vectorResult=currentDict.getListWord();
                 if (index != -1 ){
-                    String value = currentDict.getListWord().get(index);
+                    String value = vectorResult.get(index);
                     String meaning = currentDict.loadMeaning(value);
                     mainUI.getLabelWord().setText(value);
+                    //set style for string mean to show
                     mainUI.getTaMeaning().setText(setStyleMean(meaning, value));
                 }
             }
@@ -163,11 +166,11 @@ public final class MainUIController {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("1");
+                
                 currentDict=dictDataVE;
                 setListModel(modelVE);
-                System.out.println("3");
-                mainUI.getListIndex().repaint();
+                mainUI.setStateVE();
+                //mainUI.getListIndex().repaint();
             }
         });
     }
@@ -176,11 +179,10 @@ public final class MainUIController {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("1");
                 currentDict=dictDataEV;
                 setListModel(modelEV);
-                System.out.println("4");
-                mainUI.getListIndex().repaint();
+                mainUI.setStateEV();
+                //mainUI.getListIndex().repaint();
             }
         });
     }
@@ -216,10 +218,7 @@ public final class MainUIController {
        
     }
     public String setStyleMean(String mean,String word){
-        String meanStyle="";
-        int lenWord=word.length();
-        meanStyle=mean.substring(lenWord+1);
-        return meanStyle;
+        return textPaneController.setStyleMean(mean, word);
     }
     
     public void setBtnListenAction(){
@@ -288,6 +287,16 @@ public final class MainUIController {
             e.printStackTrace();
         }
     }
+    public long searchWord(String word,IDictionary dict){
+        
+        // Loops to find where this word on dictionary
+        Vector<String> vectorResult=dict.getListWord();
+        int size=dict.getListWord().size();
+        for (int index = 0 ; index < size; index ++){
+            if(vectorResult.get(index).toLowerCase().equals(word)) return index;
+        }
+        return -1;
+    }
     public void setTaMeaningAction(){
         mainUI.setTaMeaningAction(new MouseAdapter() {
 //            @Override
@@ -295,11 +304,34 @@ public final class MainUIController {
                 if(e.getClickCount() == 2) { 
                         if(mainUI.getTaMeaning().getSelectedText()!=null){
                             String word=mainUI.getTaMeaning().getSelectedText();
-                            String mean=setStyleMean(currentDict.loadMeaning(word), word);
-                            quickViewUIController.displayQuickView("huynh", "huynh");
+                            
+                            long search1=searchWord(word,dictDataEV);
+                            if(search1>=0){
+                                String mean=setStyleMean(dictDataEV.loadMeaning(word), word);
+                                quickViewUIController.displayQuickView(word, mean);
+                            }
+                            else{
+                                long search2=searchWord(word, dictDataVE);
+                                if(search2>=0){
+                                    String mean=setStyleMean(dictDataVE.loadMeaning(word), word);
+                                    quickViewUIController.displayQuickView(word, mean);
+                                }
+                            }
                         }
                     } 
             }
         });
+    }
+    public void setTextEnglish(){
+        mainUI.setTextEng();
+        quickViewUIController.setTextEnglish();
+        translateController.setTextEnglish();
+        settingsController.setTextEnglish();
+    }
+    public void setTextVietNam(){
+        mainUI.setTextViet();
+        quickViewUIController.setTextVietNam();
+        translateController.setTextVietNam();
+        settingsController.setTextVietNam();
     }
 }

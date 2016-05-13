@@ -17,4 +17,6 @@ public interface IQuickViewUI {
     public void setTaMeaningText(String meaning);
     public void setBtnNextAction(ActionListener listener);
     public void setBtnPreAction(ActionListener listener);
+    public void setTextVietnamese();
+    public void setTextEnglish();
 }

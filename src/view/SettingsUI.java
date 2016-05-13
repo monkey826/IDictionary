@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.event.ActionListener;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -19,7 +20,8 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
     public SettingsUI() {
         initComponents();
         setLocationRelativeTo(null);
-        setVisible(true);
+        
+        //setVisible(true);
     }
     public void setBtnSaveLanguageActionListener(ActionListener listener){
         this.btnSaveLanguage.addActionListener(listener);
@@ -44,8 +46,8 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         jPanel1 = new javax.swing.JPanel();
         lbFontStyle = new javax.swing.JLabel();
         lbFontSize = new javax.swing.JLabel();
-        cbbFontStyle = new javax.swing.JComboBox<>();
-        cbbFontSize = new javax.swing.JComboBox<>();
+        cbbFontStyle = new javax.swing.JComboBox<String>();
+        cbbFontSize = new javax.swing.JComboBox<String>();
         ccFontColor = new javax.swing.JColorChooser();
         btnSaveFont = new javax.swing.JButton();
         btnCancelFont = new javax.swing.JButton();
@@ -67,6 +69,11 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
 
         buttonGroup1.add(btnVietnamese);
         btnVietnamese.setText("Tiếng Việt");
+        btnVietnamese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVietnameseActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(btnEnglish);
         btnEnglish.setSelected(true);
@@ -114,9 +121,9 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
 
         lbFontSize.setText("Font Size");
 
-        cbbFontStyle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbFontStyle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbbFontSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbFontSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnSaveFont.setText("Save");
 
@@ -198,12 +205,52 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelLanguageActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    private void btnVietnameseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVietnameseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVietnameseActionPerformed
+    public JRadioButton getBtnVietNamese(){
+        return this.btnVietnamese;
+    }
+    public JRadioButton getBtnEnglish(){
+        return this.btnEnglish;
+    }
+    public void setActionBtnSaveLanguage(ActionListener listener){
+        btnSaveLanguage.addActionListener(listener);
+    }
+    public void setActionBtnCancelLanguage(ActionListener listener){
+        btnCancelLanguage.addActionListener(listener);
+    }
+    public void setActionBtnSaveFont(ActionListener listener){
+        btnSaveFont.addActionListener(listener);
+    }
+    public void setActionBtnCancelFont(ActionListener listener){
+        btnCancelFont.addActionListener(listener);
+    }
+    public void displayUI(){
+        this.setVisible(true);
+    }
+    public void hideUI(){
+        this.setVisible(false);
+    }
+    public void setTextVietnamese(){
+        btnCancelFont.setText("Hủy bỏ");
+        btnCancelLanguage.setText("Hủy bỏ");
+        btnSaveFont.setText("Lưu");
+        btnSaveLanguage.setText("lưu");
+        //lbTitle.setText("Chọn ngôn ngữ hiển thị");
+        setTitle("Cài đặt");
+        this.repaint();
+    }
+    public void setTextEnglish(){
+         btnCancelFont.setText("Cancel");
+        btnCancelLanguage.setText("Cancel");
+        btnSaveFont.setText("Save");
+        btnSaveLanguage.setText("Save");
+        //lbTitle.setText("Chọn ngôn ngữ hiển thị");
+        setTitle("Setting");
+        this.repaint();
+    }
+ //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
 //         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 //         */
@@ -224,14 +271,7 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
 //            java.util.logging.Logger.getLogger(SettingsUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new SettingsUI().setVisible(true);
-//            }
-//        });
-//    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelFont;

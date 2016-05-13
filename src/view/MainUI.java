@@ -5,12 +5,17 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import model.Dictionary;
 
 /**
@@ -25,6 +30,17 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     public MainUI() {
         initComponents();
         taMeaning.setEditable(false);
+        taMeaning.setCaretPosition(0);
+        taMeaning.setContentType("text/html");
+        listIndex.setFont(new Font("Times New Roman", Font.BOLD, 15));
+//        btnCopy.setBorderPainted(false);
+        //btnCopy.setFocusPainted(false);
+        btnVE.setContentAreaFilled(false);
+        HashMap<TextAttribute, Object> textAttrMap = new HashMap<TextAttribute, Object>();
+        textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        textAttrMap.put(TextAttribute.FOREGROUND, Color.BLUE);
+
+         btnVE.setFont( btnVE.getFont().deriveFont(textAttrMap));
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -49,14 +65,12 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         btnCopy = new javax.swing.JButton();
         btnListen = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        pnelTool = new javax.swing.JPanel();
         btnTranslateSentence = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
         pnelHelp = new javax.swing.JPanel();
         btnAbout = new javax.swing.JButton();
         btnHelpContents = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        taMeaning = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         listIndex = new javax.swing.JList<String>();
         tfSearch = new javax.swing.JTextField();
@@ -69,6 +83,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         jPanel2 = new javax.swing.JPanel();
         lbWord = new javax.swing.JLabel();
         btnSound = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        taMeaning = new javax.swing.JTextPane();
 
         jButton4.setText("jButton4");
 
@@ -92,7 +108,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IDictionary ");
 
-        btnVE.setText("V-E");
+        btnVE.setText("Viet-Eng");
         btnVE.setToolTipText("Previous entry");
         btnVE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,10 +118,11 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
 
         lbToolTip.setText("jLabel1");
 
-        btnEV.setText("E-V");
+        btnEV.setText("Eng-Viet");
         btnEV.setToolTipText("Next Entry");
 
         btnCopy.setText("Copy");
+        btnCopy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnListen.setText("Listen");
 
@@ -117,10 +134,10 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
             pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnelDictionaryLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnVE, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEV, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addGroup(pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVE, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addComponent(btnEV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,32 +170,37 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
 
         btnExport.setText("Export ");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnelToolLayout = new javax.swing.GroupLayout(pnelTool);
+        pnelTool.setLayout(pnelToolLayout);
+        pnelToolLayout.setHorizontalGroup(
+            pnelToolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnelToolLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(btnTranslateSentence)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 406, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pnelToolLayout.setVerticalGroup(
+            pnelToolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnelToolLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnelToolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTranslateSentence, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(btnExport, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Tools", jPanel1);
+        jTabbedPane1.addTab("Tools", pnelTool);
 
         btnAbout.setText("About");
 
         btnHelpContents.setText("Help Contents");
+        btnHelpContents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpContentsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnelHelpLayout = new javax.swing.GroupLayout(pnelHelp);
         pnelHelp.setLayout(pnelHelpLayout);
@@ -202,13 +224,6 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         );
 
         jTabbedPane1.addTab("Help", pnelHelp);
-
-        taMeaning.setColumns(20);
-        taMeaning.setLineWrap(true);
-        taMeaning.setRows(5);
-        taMeaning.setWrapStyleWord(true);
-        taMeaning.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane2.setViewportView(taMeaning);
 
         listIndex.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -240,8 +255,6 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
 
         btnSettings.setText("Settings");
 
-        lbWord.setText("Word");
-
         btnSound.setText("sounds");
         btnSound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,9 +267,9 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(lbWord, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSound)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -266,6 +279,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                 .addComponent(lbWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jScrollPane4.setViewportView(taMeaning);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -294,7 +309,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                         .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))))
+                            .addComponent(jScrollPane4))))
                 .addGap(21, 21, 21))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -313,20 +328,18 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbListResults, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane4)))
                 .addGap(2, 2, 2))
         );
         jDesktopPane1.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(tfSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lbSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -335,6 +348,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         jDesktopPane1.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnSettings, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -349,14 +363,24 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void setStyleButonEV(){
+        
+    }
+    public void setStyleButtonVE(){
+        
+    }
     private void btnSoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoundActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSoundActionPerformed
-
+    
     private void btnVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVEActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVEActionPerformed
+
+    private void btnHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpContentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHelpContentsActionPerformed
     @Override
     public void setListIndexValueChanged(javax.swing.event.ListSelectionListener listener) {                                       
         // TODO add your handling code here:
@@ -431,7 +455,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         return this.listIndex;
     }
     @Override
-    public JTextArea getTaMeaning(){
+    public JTextPane getTaMeaning(){
         return this.taMeaning;
     }
     @Override
@@ -441,7 +465,54 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     public JLabel getLabelWord(){
         return lbWord;
     }
-    
+     public void setStateEV(){
+         btnSound.setVisible(true);
+         this.repaint();
+     }
+    public void setStateVE(){
+        btnSound.setVisible(false);
+        this.repaint();
+    }
+     public void updateUI(){
+         this.repaint();
+     }
+    public void setTextEng(){
+        btnAbout.setText("About");
+        btnCopy.setText("Copy");
+        btnEV.setText("Eng-Viet");
+        btnExport.setText("Export");
+        btnHelpContents.setText("Help Contents");
+        btnListen.setText("Listen");
+        btnPrint.setText("Print");
+        btnSettings.setText("Settings");
+        btnSound.setText("Sound");
+        btnTranslateSentence.setText("Translate Sentence");
+        btnVE.setText("Viet-Eng");
+        jButton4.setText(null);
+        pnelDictionary.setName("Dictionary & Culture");
+        pnelHelp.setName("Help");
+        pnelTool.setName("Tool");
+        this.repaint();
+       
+    }
+    public void setTextViet(){
+        btnAbout.setText("Thông tin");
+        btnCopy.setText("Sao chép");
+        btnEV.setText("Anh-Việt");
+        btnExport.setText("Xuất");
+        btnHelpContents.setText("Trợ giúp");
+        btnListen.setText("Nghe");
+        btnPrint.setText("In");
+        btnSettings.setText("Cài đặt");
+        btnSound.setText("Đọc");
+        btnTranslateSentence.setText("Dịch online");
+        btnVE.setText("Việt-Anh");
+        jButton4.setText(null);
+        pnelDictionary.setName("Chọn từ điển");
+        pnelHelp.setName("Trợ giúp");
+        pnelTool.setName("Công cụ");
+         this.repaint();
+    }
     
 
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -482,11 +553,10 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbListResults;
     private javax.swing.JLabel lbListWords;
@@ -497,7 +567,8 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     private javax.swing.JList<String> listResults;
     private javax.swing.JPanel pnelDictionary;
     private javax.swing.JPanel pnelHelp;
-    private javax.swing.JTextArea taMeaning;
+    private javax.swing.JPanel pnelTool;
+    private javax.swing.JTextPane taMeaning;
     private javax.swing.JTextField tfSearch;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,33 +23,30 @@ import java.util.logging.Logger;
 public class Dictionary implements IDictionary {
 
     private Hashtable<String, Word> mapWord;
-    private File indexesFile;
-    private File meansFile;
     private Vector<String> words = new Vector<>();
-    private static RandomAccessFile raf;
-    private static Word word;
-    //Constructor 
-
-    public Dictionary(String filePathIndex,String filePathDict) {
+    private int type;//type of dictionary(VE is 2- or EV is 1)
+    //construct
+    public Dictionary(int type) {
         // Init hashtable
         this.mapWord = new Hashtable<>();
-        setTypeDictionary(filePathIndex, filePathDict);
-    }
-     public void setTypeDictionary(String filePathIndex,String filePathDict){
-        indexesFile = new File(filePathIndex);
-        // Meanning file
-        meansFile = new File(filePathDict);
-        // Init random access file
-        // Load index file 
+        //setTypeDictionary(filePathIndex, filePathDict);
+        this.type=type;
         loadIndex();
-     }
-    public void loadIndex() {
+    }
 
+    public void loadIndex() {
+        String filePathIndex;
+        if(type==1)
+            filePathIndex=pathIndexEV;
+        else
+            filePathIndex=pathIndexVE;
+        
         long begin = System.currentTimeMillis();
+        
         try {
             // Using StringBuilder 
             StringBuilder strBuilder = new StringBuilder();
-            try (FileInputStream input = new FileInputStream(indexesFile)) {
+            try (FileInputStream input = new FileInputStream(new File(filePathIndex))) {
                 byte[] buffer = new byte[1024];
                 while (input.read(buffer) != -1) // Loops until indexes file end.
                 {
@@ -63,13 +60,12 @@ public class Dictionary implements IDictionary {
                     // divided string 
                     String elements[] = line.split("\t");
                     if (elements.length == 3) { // If enough word,off,length
-//                        String word = mapWord.get(elements[0]);
                         int offset = base64ToBase10(elements[1]);
                         int length = base64ToBase10(elements[2]);
                         // Add to vector words.
                         words.add(elements[0]);
                         // Create a new word;
-                        word = new Word(elements[0], offset, length);
+                        Word word = new Word(elements[0], offset, length);
                         // Add to hashtable;
                         mapWord.put(elements[0], word);
                     }
@@ -96,9 +92,14 @@ public class Dictionary implements IDictionary {
 
     @Override
     public String loadMeaning(String word) {
+        String filePathDict;
+        if(type==1)
+            filePathDict=pathMeaningEV;
+        else filePathDict=pathMeaningVE;
+        RandomAccessFile raf = null;
         String meaning = "";
         try {
-            raf = new RandomAccessFile(meansFile, "r");
+            raf = new RandomAccessFile(new File(filePathDict), "r");
             Word wordSearch = mapWord.get(word);
             for (int i = 0; i < wordSearch.getLength(); i++) {
                 byte[] buff = new byte[wordSearch.getLength()];
@@ -123,17 +124,5 @@ public class Dictionary implements IDictionary {
     public Vector<String> getListWord() {
         return words;
 
-    }
-     public String getPathIndexAV(){
-         return IDictionary.pathIndexAV;
-     }
-    public String getPathIndexVA(){
-        return IDictionary.pathIndexVA;
-    }
-    public String getPathDictAV(){
-        return IDictionary.pathMeaningAV;
-    }
-    public String getPathDictVA(){
-        return IDictionary.pathMeaningVA;
     }
 }

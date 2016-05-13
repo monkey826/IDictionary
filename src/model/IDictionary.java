@@ -12,16 +12,11 @@ import java.util.Vector;
  * @author Monkey-private
  */
 public interface IDictionary {
-    public final String pathIndexAV = System.getProperty("user.dir").concat("/data/anhviet109K.index");
-    public final String pathMeaningAV = System.getProperty("user.dir").concat("/data/anhviet109K.dict");
-    public final String pathIndexVA = System.getProperty("user.dir").concat("/data/vietanh.index");
-    public final String pathMeaningVA = System.getProperty("user.dir").concat("/data/vietanh.dict");
+    public final String pathIndexEV = System.getProperty("user.dir").concat("/data/anhviet109K.index");
+    public final String pathMeaningEV = System.getProperty("user.dir").concat("/data/anhviet109K.dict");
+    public final String pathIndexVE = System.getProperty("user.dir").concat("/data/vietanh.index");
+    public final String pathMeaningVE = System.getProperty("user.dir").concat("/data/vietanh.dict");
     public Vector<String> getListWord();
-    public String loadMeaning(String word);
-    public void setTypeDictionary(String filePathIndex,String filePathDict);
-    public String getPathIndexAV();
-    public String getPathIndexVA();
-    public String getPathDictAV();
-    public String getPathDictVA();
-    
+    public void loadIndex();
+    public String loadMeaning(String word);    
 }

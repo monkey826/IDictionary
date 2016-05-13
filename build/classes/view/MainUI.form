@@ -100,7 +100,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jPanel2" max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -126,16 +126,16 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" pref="210" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="209" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="lbListResults" min="-2" pref="20" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" pref="209" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="210" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="418" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -161,12 +161,12 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnVE" min="-2" pref="70" max="-2" attributes="0"/>
-                              <Component id="btnEV" min="-2" pref="70" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnVE" pref="116" max="32767" attributes="0"/>
+                              <Component id="btnEV" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnListen" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnPrint" min="-2" pref="70" max="-2" attributes="0"/>
@@ -202,7 +202,7 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnVE">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="V-E"/>
+                    <Property name="text" type="java.lang.String" value="Viet-Eng"/>
                     <Property name="toolTipText" type="java.lang.String" value="Previous entry"/>
                   </Properties>
                   <Events>
@@ -216,13 +216,16 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnEV">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="E-V"/>
+                    <Property name="text" type="java.lang.String" value="Eng-Viet"/>
                     <Property name="toolTipText" type="java.lang.String" value="Next Entry"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCopy">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Copy"/>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -240,7 +243,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel1">
+            <Container class="javax.swing.JPanel" name="pnelTool">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Tools">
@@ -334,29 +337,12 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Help Contents"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHelpContentsActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTextArea" name="taMeaning">
-              <Properties>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="lineWrap" type="boolean" value="true"/>
-                <Property name="rows" type="int" value="5"/>
-                <Property name="wrapStyleWord" type="boolean" value="true"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -460,9 +446,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbWord" min="-2" pref="139" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnSound" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -479,9 +465,6 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lbWord">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Word"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnSound">
               <Properties>
@@ -490,6 +473,14 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSoundActionPerformed"/>
               </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextPane" name="taMeaning">
             </Component>
           </SubComponents>
         </Container>

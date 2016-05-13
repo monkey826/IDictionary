@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -38,12 +39,16 @@ public interface IMainUI {
     public void setBtnCopyActionListener(java.awt.event.ActionListener evt);
 
     public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt);
-    
+    public void setStateEV();
+    public void setStateVE();
     public void setBtnSoundActionListener(ActionListener evt);
     public void setBtnListenActionListener(ActionListener listener);
     public void setTaMeaningAction(MouseAdapter listener);
     public JList getListIndex();
-    public JTextArea getTaMeaning();
+    public JTextPane getTaMeaning();
     public JTextField getTfSearch();
     public JLabel getLabelWord();
+    public void setTextEng();
+    public void setTextViet();
+    public void updateUI();
 }

@@ -22,4 +22,11 @@ public class QuickViewUIController {
         quickViewUI.setLbWordText(word);
         quickViewUI.setTaMeaningText(mean);
     }
+    public void setTextEnglish(){
+        quickViewUI.setTextEnglish();
+        
+    }
+    public void setTextVietNam(){
+        quickViewUI.setTextVietnamese();
+    }
 }

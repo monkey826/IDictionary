@@ -28,4 +28,8 @@ public interface ITranslateUI {
     public JRadioButton getRbtnEV();
 
     public JRadioButton getRbtnVE();
+    public void setTextVietnamese();
+    public void setTextEnglish();
+    public void displayUI();
+    public void hideUI();
 }
