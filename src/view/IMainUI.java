@@ -50,4 +50,5 @@ public interface IMainUI {
     public void setTextEng();
     public void setTextViet();
     public void updateUI();
+    public void displayUI();
 }

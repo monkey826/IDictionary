@@ -33,8 +33,14 @@ import view.MainUI;
 import javax.speech.*;
 import java.util.*;
 import javax.speech.synthesis.*;
+<<<<<<< HEAD
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+=======
+import model.ManageStatus;
+import model.Status;
+
+>>>>>>> origin/master
 
 /**
  *
@@ -53,9 +59,11 @@ public final class MainUIController {
     private QuickViewUIController quickViewUIController;
     private IDictionary currentDict;
     private TextPaneController textPaneController;
+    private ManageStatus manageStatus;
 
     public MainUIController() {
         //load data
+        manageStatus=new ManageStatus();
         copyFile();
         dictDataEV = new Dictionary(1);
         modelEV=new DefaultListModel();
@@ -65,6 +73,7 @@ public final class MainUIController {
         modelVE=new DefaultListModel();
         loadListModelVE();
         
+        
         mainUI = new MainUI();
         soundParagraphController=new SoundParagraphController(this);
         quickViewUIController=new QuickViewUIController();
@@ -72,9 +81,12 @@ public final class MainUIController {
         settingsController=new SettingsUIController(this);
         translateController=new TranslateUIController();
         //set First display:
-        currentDict=dictDataEV;
-        setListModel(modelEV);
         
+        
+        //load last work
+        loadLastWorking();
+        
+        ///////////////////
         //set Action:
         setSounds();
         setActionSearch();
@@ -99,6 +111,23 @@ public final class MainUIController {
                         + "Time: 10/5/2016", "About us !", JOptionPane.INFORMATION_MESSAGE,icon );
             }
         });
+    }
+    public void loadLastWorking(){
+        if(manageStatus.getStatus().getTypeDictionary()==2){
+            currentDict=dictDataVE;
+            setListModel(modelVE);
+        }
+        else{
+            currentDict=dictDataEV;
+            setListModel(modelEV);
+        } 
+        if(manageStatus.getStatus().getLanguageDisplay()==2){
+            setTextVietNam();
+            mainUI.updateUI();
+            mainUI.displayUI();
+        }
+        else mainUI.displayUI();
+       
     }
     public void setBtnTranslateAction(){
         mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
@@ -165,7 +194,10 @@ public final class MainUIController {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int index = mainUI.getListIndex().getSelectedIndex();
+<<<<<<< HEAD
                 
+=======
+>>>>>>> origin/master
                 Vector<model.Word> vectorResult=currentDict.getListWord();
                 if (index != -1 ){
                     String value = vectorResult.get(index).getWord();

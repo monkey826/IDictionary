@@ -40,9 +40,9 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         textAttrMap.put(TextAttribute.FOREGROUND, Color.BLUE);
 
-         btnVE.setFont( btnVE.getFont().deriveFont(textAttrMap));
+        btnVE.setFont( btnVE.getFont().deriveFont(textAttrMap));
         setLocationRelativeTo(null);
-        setVisible(true);
+        //setVisible(true);
     }
 
     /**
@@ -454,8 +454,15 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }
      public void updateUI(){
          this.repaint();
+<<<<<<< HEAD
      }
     @Override
+=======
+    }
+    public void displayUI(){
+        this.setVisible(true);
+    } 
+>>>>>>> origin/master
     public void setTextEng(){
         btnAbout.setText("About");
         btnEV.setText("Eng-Viet");
