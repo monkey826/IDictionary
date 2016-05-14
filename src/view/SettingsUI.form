@@ -33,7 +33,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="491" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jTabbedPane1" min="-2" pref="479" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -148,59 +151,39 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnSaveFont" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnCancelFont" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cbbFontStyle" pref="118" max="32767" attributes="0"/>
+                                  <Component id="lbFontStyle" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbFontStyle" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <Component id="cbFont" min="-2" pref="146" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbSpell" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbType" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbMean" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbPhrase" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="cbSizePhrase" max="32767" attributes="0"/>
-                                              <Component id="cbSizeMean" max="32767" attributes="0"/>
-                                              <Component id="cbSizeType" max="32767" attributes="0"/>
-                                              <Component id="cbSizeSpell" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="97" pref="97" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtColorType" max="32767" attributes="0"/>
-                                              <Component id="txtColorMean" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtColorPhrase" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtColorSpell" pref="91" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lbFontSize" min="-2" pref="107" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="lbFontColor" min="-2" pref="118" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lbFontSize" max="32767" attributes="0"/>
+                                  <Component id="cbbFontSize" pref="107" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Component id="ccFontColor" min="-2" pref="613" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnSaveFont" min="-2" pref="67" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnCancelFont" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ccFontColor" min="-2" pref="613" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbFontColor" min="-2" pref="118" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -208,46 +191,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbFontColor" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="lbFontSize" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbFontStyle" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cbSizeSpell" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbSpell" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtColorSpell" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="cbFont" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lbFontStyle" pref="27" max="32767" attributes="0"/>
+                          <Component id="lbFontSize" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbSizeType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtColorType" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbbFontSize" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbbFontStyle" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbMean" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbSizeMean" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtColorMean" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbPhrase" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbSizePhrase" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtColorPhrase" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="ccFontColor" min="-2" pref="210" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lbFontColor" min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <Component id="ccFontColor" min="-2" pref="290" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSaveFont" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -269,14 +225,14 @@
                 <Property name="text" type="java.lang.String" value="Font Size"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbFont">
+            <Component class="javax.swing.JComboBox" name="cbbFontStyle">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
-                    <StringItem index="0" value="Times New Roman"/>
-                    <StringItem index="1" value="Arial"/>
-                    <StringItem index="2" value="Calibri"/>
-                    <StringItem index="3" value="Arial Black"/>
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -284,15 +240,14 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbSizeSpell">
+            <Component class="javax.swing.JComboBox" name="cbbFontSize">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="26"/>
-                    <StringItem index="1" value="24"/>
-                    <StringItem index="2" value="20"/>
-                    <StringItem index="3" value="18"/>
-                    <StringItem index="4" value="16"/>
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -316,75 +271,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Font Color"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lbSpell">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Spell:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lbType">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Type Word:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lbMean">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mean:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lbPhrase">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Phrase:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbSizeType">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="24"/>
-                    <StringItem index="1" value="20"/>
-                    <StringItem index="2" value="16"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbSizeMean">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="18"/>
-                    <StringItem index="1" value="16"/>
-                    <StringItem index="2" value="14"/>
-                    <StringItem index="3" value="12"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbSizePhrase">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="20"/>
-                    <StringItem index="1" value="18"/>
-                    <StringItem index="2" value="16"/>
-                    <StringItem index="3" value="14"/>
-                    <StringItem index="4" value="12"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Chooser:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtColorType">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtColorMean">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtColorPhrase">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtColorSpell">
             </Component>
           </SubComponents>
         </Container>

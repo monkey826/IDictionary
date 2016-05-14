@@ -6,6 +6,9 @@
 package view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -18,8 +21,10 @@ import javax.swing.JTextPane;
  * @author Monkey
  */
 public interface IMainUI {
-    public void setListIndexValueChanged(javax.swing.event.ListSelectionListener evt);
-
+    public void setListMouseAction(MouseAdapter listener);
+    public void setListKeyAction(KeyAdapter listener);
+    public void setListResultMouseAction(MouseAdapter listener);
+    public void setListResultKeyAction(KeyAdapter listener);
     public void setTfSearchKeyListener(java.awt.event.KeyListener evt);
 
     public void setBtnSettingsActionListener(java.awt.event.ActionListener evt);                                           
@@ -29,15 +34,11 @@ public interface IMainUI {
 
     public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener evt);
 
-
     public void setBtnVEActionListener(java.awt.event.ActionListener evt);
 
     public void setBtnEVActionListener(java.awt.event.ActionListener evt);
-
-    
-
     public void setBtnCopyActionListener(java.awt.event.ActionListener evt);
-
+    
     public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt);
     public void setStateEV();
     public void setStateVE();
@@ -48,8 +49,8 @@ public interface IMainUI {
     public JTextPane getTaMeaning();
     public JTextField getTfSearch();
     public JLabel getLabelWord();
+    public JList getListRerult();
     public void setTextEng();
     public void setTextViet();
     public void updateUI();
-    public void displayUI();
 }

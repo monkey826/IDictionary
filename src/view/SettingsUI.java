@@ -46,24 +46,12 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         jPanel1 = new javax.swing.JPanel();
         lbFontStyle = new javax.swing.JLabel();
         lbFontSize = new javax.swing.JLabel();
-        cbFont = new javax.swing.JComboBox<String>();
-        cbSizeSpell = new javax.swing.JComboBox<String>();
+        cbbFontStyle = new javax.swing.JComboBox<String>();
+        cbbFontSize = new javax.swing.JComboBox<String>();
         ccFontColor = new javax.swing.JColorChooser();
         btnSaveFont = new javax.swing.JButton();
         btnCancelFont = new javax.swing.JButton();
         lbFontColor = new javax.swing.JLabel();
-        lbSpell = new javax.swing.JLabel();
-        lbType = new javax.swing.JLabel();
-        lbMean = new javax.swing.JLabel();
-        lbPhrase = new javax.swing.JLabel();
-        cbSizeType = new javax.swing.JComboBox();
-        cbSizeMean = new javax.swing.JComboBox();
-        cbSizePhrase = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        txtColorType = new javax.swing.JTextField();
-        txtColorMean = new javax.swing.JTextField();
-        txtColorPhrase = new javax.swing.JTextField();
-        txtColorSpell = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Settings dictionary");
@@ -133,9 +121,9 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
 
         lbFontSize.setText("Font Size");
 
-        cbFont.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Times New Roman", "Arial", "Calibri", "Arial Black" }));
+        cbbFontStyle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbSizeSpell.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26", "24", "20", "18", "16" }));
+        cbbFontSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnSaveFont.setText("Save");
 
@@ -143,105 +131,51 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
 
         lbFontColor.setText("Font Color");
 
-        lbSpell.setText("Spell:");
-
-        lbType.setText("Type Word:");
-
-        lbMean.setText("Mean:");
-
-        lbPhrase.setText("Phrase:");
-
-        cbSizeType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24", "20", "16" }));
-
-        cbSizeMean.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18", "16", "14", "12" }));
-
-        cbSizePhrase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20", "18", "16", "14", "12" }));
-
-        jLabel6.setText("Chooser:");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSaveFont, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnCancelFont)
-                            .addGap(42, 42, 42))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbFontStyle, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(59, 59, 59)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbSpell)
-                                        .addComponent(lbType)
-                                        .addComponent(lbMean)
-                                        .addComponent(lbPhrase))
-                                    .addGap(71, 71, 71)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cbSizePhrase, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbSizeMean, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbSizeType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbSizeSpell, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(97, 97, 97)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtColorType)
-                                        .addComponent(txtColorMean)
-                                        .addComponent(txtColorPhrase)
-                                        .addComponent(txtColorSpell, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lbFontSize, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(ccFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbbFontStyle, 0, 118, Short.MAX_VALUE)
+                            .addComponent(lbFontStyle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbFontSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbbFontSize, 0, 107, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSaveFont, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelFont)
+                        .addGap(42, 42, 42))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ccFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbFontSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6)
-                    .addComponent(lbFontStyle, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbSizeSpell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbSpell)
-                            .addComponent(txtColorSpell, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbFontStyle, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(lbFontSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbType)
-                    .addComponent(cbSizeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtColorType, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMean)
-                    .addComponent(cbSizeMean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtColorMean, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbPhrase)
-                    .addComponent(cbSizePhrase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtColorPhrase, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ccFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbbFontSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbFontStyle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(ccFontColor, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSaveFont)
@@ -259,7 +193,9 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -301,29 +237,15 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
         btnCancelLanguage.setText("Hủy bỏ");
         btnSaveFont.setText("Lưu");
         btnSaveLanguage.setText("lưu");
-        lbFontColor.setText("Màu chữ");
-        lbFontSize.setText("Cỡ chữ");
-        lbFontStyle.setText("Font chữ");
-        lbMean.setText("Nghĩa");
-        lbPhrase.setText("Cụm từ");
-        lbSpell.setText("Phiên âm");
-        lbType.setText("Từ loại");
         //lbTitle.setText("Chọn ngôn ngữ hiển thị");
         setTitle("Cài đặt");
         this.repaint();
     }
     public void setTextEnglish(){
-        btnCancelFont.setText("Cancel");
+         btnCancelFont.setText("Cancel");
         btnCancelLanguage.setText("Cancel");
         btnSaveFont.setText("Save");
         btnSaveLanguage.setText("Save");
-        lbFontColor.setText("Font Color");
-        lbFontSize.setText("Font Size");
-        lbFontStyle.setText("Font Style");
-        lbMean.setText("Mean");
-        lbPhrase.setText("Phrase");
-        lbSpell.setText("Spell");
-        lbType.setText("Type");
         //lbTitle.setText("Chọn ngôn ngữ hiển thị");
         setTitle("Setting");
         this.repaint();
@@ -359,27 +281,15 @@ public class SettingsUI extends javax.swing.JFrame implements ISettingsUI{
     private javax.swing.JButton btnSaveLanguage;
     private javax.swing.JRadioButton btnVietnamese;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cbFont;
-    private javax.swing.JComboBox cbSizeMean;
-    private javax.swing.JComboBox cbSizePhrase;
-    private javax.swing.JComboBox<String> cbSizeSpell;
-    private javax.swing.JComboBox cbSizeType;
+    private javax.swing.JComboBox<String> cbbFontSize;
+    private javax.swing.JComboBox<String> cbbFontStyle;
     private javax.swing.JColorChooser ccFontColor;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbFontColor;
     private javax.swing.JLabel lbFontSize;
     private javax.swing.JLabel lbFontStyle;
-    private javax.swing.JLabel lbMean;
-    private javax.swing.JLabel lbPhrase;
-    private javax.swing.JLabel lbSpell;
     private javax.swing.JLabel lbTitle;
-    private javax.swing.JLabel lbType;
-    private javax.swing.JTextField txtColorMean;
-    private javax.swing.JTextField txtColorPhrase;
-    private javax.swing.JTextField txtColorSpell;
-    private javax.swing.JTextField txtColorType;
     // End of variables declaration//GEN-END:variables
 }

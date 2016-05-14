@@ -8,6 +8,9 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
@@ -40,9 +43,9 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         textAttrMap.put(TextAttribute.FOREGROUND, Color.BLUE);
 
-        btnVE.setFont( btnVE.getFont().deriveFont(textAttrMap));
+         btnVE.setFont( btnVE.getFont().deriveFont(textAttrMap));
         setLocationRelativeTo(null);
-        //setVisible(true);
+        setVisible(true);
     }
 
     /**
@@ -382,17 +385,22 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHelpContentsActionPerformed
     @Override
-    public void setListIndexValueChanged(javax.swing.event.ListSelectionListener listener) {                                       
+    public void setListMouseAction(MouseAdapter listener) {                                       
         // TODO add your handling code here:
-        this.listIndex.addListSelectionListener(listener);
-    }                                      
-
+        this.listIndex.addMouseListener(listener);
+    }   
+    @Override
+    public void setListKeyAction(KeyAdapter listener){
+        this.listIndex.addKeyListener(listener);
+    }
     @Override
     public void setTfSearchKeyListener(java.awt.event.KeyListener evt) {                                     
         // TODO add your handling code here:
         this.tfSearch.addKeyListener(evt);
     }                                    
-
+    public JList getListRerult(){
+        return this.listResults;
+    }
          
     @Override
     public void setBtnSettingsActionListener(java.awt.event.ActionListener evt) {                                            
@@ -434,7 +442,12 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         // TODO add your handling code here:
         this.btnCopy.addActionListener(evt);
     }                                       
-
+    public void setListResultMouseAction(MouseAdapter listener){
+        listResults.addMouseListener(listener);
+    }
+    public void setListResultKeyAction(KeyAdapter listener){
+        listResults.addKeyListener(listener);
+    }
     @Override
     public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt) {                                                
         // TODO add your handling code here:
@@ -475,10 +488,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }
      public void updateUI(){
          this.repaint();
-    }
-    public void displayUI(){
-        this.setVisible(true);
-    } 
+     }
     public void setTextEng(){
         btnAbout.setText("About");
         btnCopy.setText("Copy");
@@ -516,6 +526,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         pnelTool.setName("Công cụ");
          this.repaint();
     }
+    
     
 
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

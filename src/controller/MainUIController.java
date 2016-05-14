@@ -7,6 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -35,9 +36,6 @@ import view.MainUI;
 import javax.speech.*;
 import java.util.*;
 import javax.speech.synthesis.*;
-import model.ManageStatus;
-import model.Status;
-
 
 /**
  *
@@ -52,15 +50,14 @@ public final class MainUIController {
     private TranslateUIController translateController;
     private DefaultListModel modelEV;
     private DefaultListModel modelVE;
+    private DefaultListModel modelHistory;
     private SoundParagraphController soundParagraphController;
     private QuickViewUIController quickViewUIController;
     private IDictionary currentDict;
     private TextPaneController textPaneController;
-    private ManageStatus manageStatus;
-
+    private HistoryListController historyListController;
     public MainUIController() {
         //load data
-        manageStatus=new ManageStatus();
         copyFile();
         dictDataEV = new Dictionary(1);
         modelEV=new DefaultListModel();
@@ -70,20 +67,21 @@ public final class MainUIController {
         modelVE=new DefaultListModel();
         loadListModelVE();
         
+        modelHistory=new DefaultListModel();
+        
         
         mainUI = new MainUI();
+        mainUI.getListRerult().setModel(modelHistory);
         soundParagraphController=new SoundParagraphController(this);
         quickViewUIController=new QuickViewUIController();
         textPaneController=new TextPaneController();
         settingsController=new SettingsUIController(this);
         translateController=new TranslateUIController();
+        historyListController=new HistoryListController();
         //set First display:
+        currentDict=dictDataEV;
+        setListModel(modelEV);
         
-        
-        //load last work
-        loadLastWorking();
-        
-        ///////////////////
         //set Action:
         setSounds();
         setActionSearch();
@@ -93,23 +91,7 @@ public final class MainUIController {
         setTaMeaningAction();
         setBtnEVAction();
         setBtnVEAction();
-    }
-    public void loadLastWorking(){
-        if(manageStatus.getStatus().getTypeDictionary()==2){
-            currentDict=dictDataVE;
-            setListModel(modelVE);
-        }
-        else{
-            currentDict=dictDataEV;
-            setListModel(modelEV);
-        } 
-        if(manageStatus.getStatus().getLanguageDisplay()==2){
-            setTextVietNam();
-            mainUI.updateUI();
-            mainUI.displayUI();
-        }
-        else mainUI.displayUI();
-       
+        setListResultAction();
     }
     public void setBtnTranslateAction(){
         mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
@@ -128,6 +110,49 @@ public final class MainUIController {
         }
         );
     }
+    public void setListResultAction(){
+        mainUI.setListResultKeyAction(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                   int index = mainUI.getListRerult().getSelectedIndex();
+                    String value = (String)modelHistory.get(index);
+                    String meaning = currentDict.loadMeaning(value);
+                    mainUI.getLabelWord().setText(value);
+                    mainUI.getTaMeaning().setText(setStyleMean(meaning, value)); 
+                    addItemToListResult(value);
+                    
+                    
+                }
+            }
+        });
+        mainUI.setListResultMouseAction(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 1) {
+                    int index = mainUI.getListRerult().getSelectedIndex();
+                    String value = (String)modelHistory.get(index);
+                    String meaning = currentDict.loadMeaning(value);
+                    mainUI.getLabelWord().setText(value);
+                    mainUI.getTaMeaning().setText(setStyleMean(meaning, value)); 
+                    addItemToListResult(value);
+                }
+            }
+        });
+    }
+    public void addItemToListResult(String item){
+        int size=modelHistory.size();
+        modelHistory.add(0, item);
+//        for(int i=0;i<size;i++){
+//            if(!((String)modelHistory.get(i)).equals(item))
+//                //modelHistory.remove(i);
+//            {
+//                System.out.println("a: "+(String)modelHistory.get(i));
+//                System.out.println("trung");
+//            }
+//        }
+        if(modelHistory.size()>20)
+            modelHistory.remove(20);
+    }
     public void setActionSearch(){
         mainUI.setTfSearchKeyListener(new KeyListener() {
             @Override
@@ -143,6 +168,10 @@ public final class MainUIController {
                     if(index==-1)
                         JOptionPane.showMessageDialog(null, "This word \"" + value + "\" "
                                 + "doesn't existed in dictionary.","Search failed",JOptionPane.INFORMATION_MESSAGE);
+                    else{
+                        addItemToListResult(value);
+                    }
+                    
                 }
             }
 
@@ -154,8 +183,7 @@ public final class MainUIController {
                 Vector<model.Word> vectorResult=currentDict.getListWord();
                 for ( index  = 0; index < vectorResult.size(); index ++){
                     String it = vectorResult.get(index).getWord().toLowerCase();
-                    if (it.startsWith(value) || it.compareTo(value) > 0){ 
-                        System.out.println(value);
+                    if (it.startsWith(value) || it.compareTo(value) > 0){
                         break;
                     }
                 }
@@ -172,18 +200,33 @@ public final class MainUIController {
                 listWords.scrollRectToVisible(listWords.getCellBounds(index, (int) (index + num)));
             }
         });
-        mainUI.setListIndexValueChanged(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                int index = mainUI.getListIndex().getSelectedIndex();
-                Vector<model.Word> vectorResult=currentDict.getListWord();
-                if (index != -1 ){
-                    String value = vectorResult.get(index).getWord();
-                    String meaning = currentDict.loadMeaning(value);
-                    mainUI.getLabelWord().setText(value);
-                    //set style for string mean to show
-                    mainUI.getTaMeaning().setText(setStyleMean(meaning, value));
+        mainUI.setListMouseAction(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 1) {
+                    int index = mainUI.getListIndex().getSelectedIndex();
+                    Vector<model.Word> vectorResult=currentDict.getListWord();
+                    if (index != -1 ){
+                        String value = vectorResult.get(index).getWord();
+                        String meaning = currentDict.loadMeaning(value);
+                        mainUI.getLabelWord().setText(value);
+                        mainUI.getTaMeaning().setText(setStyleMean(meaning, value)); 
+                        addItemToListResult(value);
+                    }
                 }
+            }
+        });
+        mainUI.setListKeyAction(new KeyAdapter() {
+            public void keyPressed(KeyEvent e){
+                 if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                     int index = mainUI.getListIndex().getSelectedIndex();
+                     Vector<model.Word> vectorResult=currentDict.getListWord();
+                     String value = vectorResult.get(index).getWord();
+                     String meaning = currentDict.loadMeaning(value);
+                     mainUI.getLabelWord().setText(value);
+                        //set style for string mean to show
+                     mainUI.getTaMeaning().setText(setStyleMean(meaning, value));
+                     addItemToListResult(value);
+                 }
             }
         });
     }
@@ -196,7 +239,6 @@ public final class MainUIController {
                 currentDict=dictDataVE;
                 setListModel(modelVE);
                 mainUI.setStateVE();
-                //mainUI.getListIndex().repaint();
             }
         });
     }
