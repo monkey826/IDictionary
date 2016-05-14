@@ -13,6 +13,7 @@ import java.io.StringReader;
  * @author HOANG_HUYNH
  */
 public class TextPaneController {
+
     private int sizeSpell;
     private int sizeWordType;
     private int sizeWordMean;
@@ -22,6 +23,19 @@ public class TextPaneController {
     private String colorWordMean;
     private String colorPhrase;
 //    private String pathIcon =  System.getProperty("user.dir") + "\\src\\icon\\h1.png";
+<<<<<<< HEAD
+
+    public String setStyleMean(String mean, String word) {
+        String meanStyle = "";
+        String newMean = "";
+        int sizeSpell, sizeWordType, sizeWordMean, sizePhrase;
+        String colorSpell, colorWordType, colorWordMean, colorPhrase;
+        try {
+            int lenWord = word.length();
+            meanStyle = mean.substring(lenWord + 1);
+        } catch (Exception e) {
+            meanStyle = null;
+=======
     public String setStyleMean(String mean,String word){
         String meanStyle="";
         String newMean="";
@@ -33,13 +47,34 @@ public class TextPaneController {
         }
         catch(Exception e){
             meanStyle=null;
+>>>>>>> origin/master
         }
-        if(meanStyle!=null){
+        if (meanStyle != null) {
             String line;
-            try(BufferedReader reader = new BufferedReader(new StringReader(meanStyle)))
-            {
-                while((line=reader.readLine())!=null){
+            try (BufferedReader reader = new BufferedReader(new StringReader(meanStyle))) {
+                while ((line = reader.readLine()) != null) {
                     //System.out.println(line);
+<<<<<<< HEAD
+                    if (line.contains("/")) {
+                        line = "<span style = \"font-size : 40px; font : san-serif;\"><b color = \"red\" >" + line + "</b></span>";
+                        System.out.println(line);
+                        newMean = newMean + line + "<br/>";
+                    } else if (line.contains("*")) {
+                        line = "<span><b><i><color=\"blue\">" + line + "</i></b></span>";
+                        newMean = newMean + line + "<br/>";
+                    } else if (line.contains("-")) {
+                        line = "<span><color=\"blue\">" + line + "</span>";
+                        newMean = newMean + line + "<br/>";
+                    } else if (line.contains("=")) {
+                        int pos = getPostionCharacter(line);
+                        String linePre = line.substring(0, pos);
+                        String lineNext = line.substring(pos + 1, line.length());
+                        //System.out.println(linePre+":"+lineNext);
+                        line = "<span><b color=\"red\">" + line + "</b></span>";
+                        newMean = newMean + "<span><b><color=\"red\">" + linePre + ":" + lineNext + "</b></span>" + "<br/>";
+                    } else {
+                        newMean = newMean + line + "<br/>";
+=======
                     if(line.contains("/")){
                         line= "<img src=\"" + this.getClass().getClassLoader().getResource("icon/spell.png").toString()+"\"/>"+"<b color=\"blue\">"+line+"</b>";
                         newMean=newMean+line+"<br/>";
@@ -62,25 +97,28 @@ public class TextPaneController {
                     }
                     else {
                          newMean=newMean+line+"<br/>";
+>>>>>>> origin/master
                     }
                 }
+            } catch (Exception e) {
+
             }
-            catch(Exception e){
-                
-            }
-            
+
         }
         return newMean ;
     }
-    
-    public int getPostionCharacter(String line){
-        char[] s=line.toCharArray();
-        int size=s.length;
-        for(int i=0;i<size;i++){
-            if(s[i]=='+') return i;;
+
+    public int getPostionCharacter(String line) {
+        char[] s = line.toCharArray();
+        int size = s.length;
+        for (int i = 0; i < size; i++) {
+            if (s[i] == '+') {
+                return i;
+            };
         }
         return -1;
     }
+
     public void setSizeSpell(int sizeSpell) {
         this.sizeSpell = sizeSpell;
     }
@@ -112,5 +150,5 @@ public class TextPaneController {
     public void setColorPhrase(String colorPhrase) {
         this.colorPhrase = colorPhrase;
     }
-    
+
 }

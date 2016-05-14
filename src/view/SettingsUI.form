@@ -59,7 +59,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="423" max="-2" attributes="0"/>
-                      <Component id="btnSaveLanguage" pref="70" max="32767" attributes="0"/>
+                      <Component id="btnSaveLanguage" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnCancelLanguage" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
                               <Component id="btnEnglish" min="-2" pref="70" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="434" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -101,11 +101,17 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnSaveLanguage">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/save.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnCancelLanguage">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/no.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cancel"/>
               </Properties>
               <Events>
@@ -166,9 +172,16 @@
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
+<<<<<<< HEAD
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="btnSaveFont" min="-2" pref="67" max="-2" attributes="0"/>
+=======
+<<<<<<< HEAD
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnSaveFont" min="-2" pref="102" max="-2" attributes="0"/>
+>>>>>>> origin/master
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnCancelFont" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -177,13 +190,26 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
                           <Component id="ccFontColor" min="-2" pref="613" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lbFontColor" min="-2" pref="118" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+<<<<<<< HEAD
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+=======
+<<<<<<< HEAD
+                      <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
+=======
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+>>>>>>> origin/master
+>>>>>>> origin/master
                   </Group>
               </Group>
             </DimensionLayout>
@@ -196,6 +222,7 @@
                           <Component id="lbFontSize" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="cbbFontSize" min="-2" max="-2" attributes="0"/>
                           <Component id="cbbFontStyle" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -204,6 +231,34 @@
                       <Component id="lbFontColor" min="-2" pref="21" max="-2" attributes="0"/>
                       <EmptySpace pref="13" max="32767" attributes="0"/>
                       <Component id="ccFontColor" min="-2" pref="290" max="-2" attributes="0"/>
+=======
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSizeType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtColorType" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+<<<<<<< HEAD
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lbFontColor" min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="ccFontColor" min="-2" pref="290" max="-2" attributes="0"/>
+=======
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbMean" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSizeMean" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtColorMean" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbPhrase" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSizePhrase" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtColorPhrase" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="ccFontColor" min="-2" pref="210" max="-2" attributes="0"/>
+>>>>>>> origin/master
+>>>>>>> origin/master
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSaveFont" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -259,11 +314,17 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnSaveFont">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/save.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnCancelFont">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/no.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cancel"/>
               </Properties>
             </Component>

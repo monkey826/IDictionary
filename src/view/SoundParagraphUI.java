@@ -48,6 +48,7 @@ public class SoundParagraphUI extends javax.swing.JFrame {
 
         jLabel1.setText("ENTER A PARAGRAPH :");
 
+        btnSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/audio.png"))); // NOI18N
         btnSound.setText("Sound");
         btnSound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +78,7 @@ public class SoundParagraphUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(btnSound))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

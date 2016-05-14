@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -12,21 +14,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringReader;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.StringTokenizer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.Dictionary;
@@ -36,6 +34,17 @@ import view.MainUI;
 import javax.speech.*;
 import java.util.*;
 import javax.speech.synthesis.*;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+=======
+import model.ManageStatus;
+import model.Status;
+
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 /**
  *
@@ -91,7 +100,42 @@ public final class MainUIController {
         setTaMeaningAction();
         setBtnEVAction();
         setBtnVEAction();
+<<<<<<< HEAD
         setListResultAction();
+=======
+        setAboutAction();
+    }
+    public void setAboutAction(){
+        mainUI.setBtnAboutActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Icon icon = new ImageIcon(MainUIController.class.getResource("/icon/get_info.png"));
+                System.out.println(icon);
+                JOptionPane.showMessageDialog(null, "This program was powered by Java \n"
+                        + "Authors: Đào Nam Tiến & Nguyễn Thúc Huynh \n"
+                        + "University: Ha Noi University of Science and Technology. \n"
+                        + "Release: Version 1.0 \n"
+                        + "Time: 10/5/2016", "About us !", JOptionPane.INFORMATION_MESSAGE,icon );
+            }
+        });
+    }
+    public void loadLastWorking(){
+        if(manageStatus.getStatus().getTypeDictionary()==2){
+            currentDict=dictDataVE;
+            setListModel(modelVE);
+        }
+        else{
+            currentDict=dictDataEV;
+            setListModel(modelEV);
+        } 
+        if(manageStatus.getStatus().getLanguageDisplay()==2){
+            setTextVietNam();
+            mainUI.updateUI();
+            mainUI.displayUI();
+        }
+        else mainUI.displayUI();
+       
+>>>>>>> origin/master
     }
     public void setBtnTranslateAction(){
         mainUI.setBtnTranslateSentenceActionListener(new ActionListener() {
@@ -200,6 +244,7 @@ public final class MainUIController {
                 listWords.scrollRectToVisible(listWords.getCellBounds(index, (int) (index + num)));
             }
         });
+<<<<<<< HEAD
         mainUI.setListMouseAction(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 if (evt.getClickCount() == 1) {
@@ -212,6 +257,23 @@ public final class MainUIController {
                         mainUI.getTaMeaning().setText(setStyleMean(meaning, value)); 
                         addItemToListResult(value);
                     }
+=======
+        mainUI.setListIndexValueChanged(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int index = mainUI.getListIndex().getSelectedIndex();
+<<<<<<< HEAD
+                
+=======
+>>>>>>> origin/master
+                Vector<model.Word> vectorResult=currentDict.getListWord();
+                if (index != -1 ){
+                    String value = vectorResult.get(index).getWord();
+                    String meaning = currentDict.loadMeaning(value);
+                    mainUI.getLabelWord().setText(value);
+                    //set style for string mean to show
+                    mainUI.getTaMeaning().setText(setStyleMean(meaning, value));
+>>>>>>> origin/master
                 }
             }
         });
