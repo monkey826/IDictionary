@@ -10,7 +10,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -26,8 +25,6 @@ public class Dictionary implements IDictionary {
     //construct
     public Dictionary(int type) {
         // Init hashtable
-//        this.mapWord = new Hashtable<>();
-        //setTypeDictionary(filePathIndex, filePathDict);
         this.type=type;
         loadIndex();
     }

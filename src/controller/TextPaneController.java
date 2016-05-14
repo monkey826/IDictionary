@@ -23,7 +23,6 @@ public class TextPaneController {
     private String colorWordMean;
     private String colorPhrase;
 //    private String pathIcon =  System.getProperty("user.dir") + "\\src\\icon\\h1.png";
-<<<<<<< HEAD
 
     public String setStyleMean(String mean, String word) {
         String meanStyle = "";
@@ -35,69 +34,30 @@ public class TextPaneController {
             meanStyle = mean.substring(lenWord + 1);
         } catch (Exception e) {
             meanStyle = null;
-=======
-    public String setStyleMean(String mean,String word){
-        String meanStyle="";
-        String newMean="";
-        int sizeSpell,sizeWordType,sizeWordMean,sizePhrase;
-        String colorSpell,colorWordType,colorWordMean,colorPhrase;
-        try{
-            int lenWord=word.length();
-            meanStyle=mean.substring(lenWord+1);
-        }
-        catch(Exception e){
-            meanStyle=null;
->>>>>>> origin/master
         }
         if (meanStyle != null) {
             String line;
             try (BufferedReader reader = new BufferedReader(new StringReader(meanStyle))) {
                 while ((line = reader.readLine()) != null) {
                     //System.out.println(line);
-<<<<<<< HEAD
                     if (line.contains("/")) {
-                        line = "<span style = \"font-size : 40px; font : san-serif;\"><b color = \"red\" >" + line + "</b></span>";
-                        System.out.println(line);
+                        line = "<img src=\"" + this.getClass().getClassLoader().getResource("icon/spell.png").toString() + "\"/>" + "<b color=\"blue\">" + line + "</b>";
                         newMean = newMean + line + "<br/>";
                     } else if (line.contains("*")) {
-                        line = "<span><b><i><color=\"blue\">" + line + "</i></b></span>";
-                        newMean = newMean + line + "<br/>";
+                        line = "<span style = \" font-size : 18px; color: blue; \"><b><i>" + line + "</i></b></span>";
+                        newMean = newMean + line + "<br>";
                     } else if (line.contains("-")) {
-                        line = "<span><color=\"blue\">" + line + "</span>";
-                        newMean = newMean + line + "<br/>";
+                        line = "<span style = \" font-size : 16px; color: red; \">" + line + "</span>";
+                        newMean = newMean + line + "<br>";
                     } else if (line.contains("=")) {
+//                        line = "<span style = \" font-size : 14px; color: green; \"> " + line + "</span>";
                         int pos = getPostionCharacter(line);
-                        String linePre = line.substring(0, pos);
+                        String linePre = line.substring(1, pos);
                         String lineNext = line.substring(pos + 1, line.length());
-                        //System.out.println(linePre+":"+lineNext);
-                        line = "<span><b color=\"red\">" + line + "</b></span>";
-                        newMean = newMean + "<span><b><color=\"red\">" + linePre + ":" + lineNext + "</b></span>" + "<br/>";
+                        
+                        newMean = newMean + "<span style = \" font-size : 16px; color: green; \"> " + linePre + ":" + lineNext + "</b></span>" + "<br>";
                     } else {
-                        newMean = newMean + line + "<br/>";
-=======
-                    if(line.contains("/")){
-                        line= "<img src=\"" + this.getClass().getClassLoader().getResource("icon/spell.png").toString()+"\"/>"+"<b color=\"blue\">"+line+"</b>";
-                        newMean=newMean+line+"<br/>";
-                    }
-                    else if(line.contains("*")){
-                        line="<span><b><i><color=\"blue\">"+line+"</i></b></span>";
-                        newMean=newMean+line+"<br/>";
-                    }
-                    else if(line.contains("-")){
-                         line="<span><color=\"blue\">"+line+"</span>";
-                         newMean=newMean+line+"<br/>";
-                    }
-                    else if(line.contains("=")){
-                         int pos=getPostionCharacter(line);
-                         String linePre=line.substring(0, pos);
-                         String lineNext=line.substring(pos+1, line.length());
-                         //System.out.println(linePre+":"+lineNext);
-                         line="<span><b color=\"red\">"+line+"</b></span>";
-                         newMean=newMean+"<span><b><color=\"red\">"+linePre+":"+lineNext+"</b></span>"+"<br/>";
-                    }
-                    else {
-                         newMean=newMean+line+"<br/>";
->>>>>>> origin/master
+                        newMean = newMean + line + "<br>";
                     }
                 }
             } catch (Exception e) {
@@ -105,7 +65,7 @@ public class TextPaneController {
             }
 
         }
-        return newMean ;
+        return newMean;
     }
 
     public int getPostionCharacter(String line) {

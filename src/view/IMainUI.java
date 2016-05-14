@@ -21,46 +21,27 @@ import javax.swing.JTextPane;
  * @author Monkey
  */
 public interface IMainUI {
-<<<<<<< HEAD
     public void setListMouseAction(MouseAdapter listener);
     public void setListKeyAction(KeyAdapter listener);
     public void setListResultMouseAction(MouseAdapter listener);
     public void setListResultKeyAction(KeyAdapter listener);
     public void setTfSearchKeyListener(java.awt.event.KeyListener evt);
-=======
-    public void setListIndexValueChanged(javax.swing.event.ListSelectionListener listener);
 
-    public void setTfSearchKeyListener(java.awt.event.KeyListener listener);
->>>>>>> origin/master
+    public void setBtnSettingsActionListener(java.awt.event.ActionListener evt);                                           
 
-    public void setBtnSettingsActionListener(java.awt.event.ActionListener listener);                                           
+    public void setBtnAboutActionListener(java.awt.event.ActionListener evt);
 
-    public void setBtnPrintActionListener(java.awt.event.ActionListener listener);
-    public void setBtnAboutActionListener(java.awt.event.ActionListener listener);
+    public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener evt);
 
-    public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener listener);
-
-<<<<<<< HEAD
     public void setBtnVEActionListener(java.awt.event.ActionListener evt);
 
     public void setBtnEVActionListener(java.awt.event.ActionListener evt);
-    public void setBtnCopyActionListener(java.awt.event.ActionListener evt);
+//    public void setBtnCopyActionListener(java.awt.event.ActionListener evt);
     
     public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt);
-=======
-
-    public void setBtnVEActionListener(java.awt.event.ActionListener listener);
-
-    public void setBtnEVActionListener(java.awt.event.ActionListener listener);
-
-    
-
-
-    public void setBtnHelpContentsActionListener(java.awt.event.ActionListener listener);
->>>>>>> origin/master
     public void setStateEV();
     public void setStateVE();
-    public void setBtnSoundActionListener(ActionListener listener);
+    public void setBtnSoundActionListener(ActionListener evt);
     public void setBtnListenActionListener(ActionListener listener);
     public void setTaMeaningAction(MouseAdapter listener);
     public JList getListIndex();

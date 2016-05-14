@@ -5,11 +5,13 @@
  */
 package controller;
 
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import model.ITranslateOnline;
-import model.TranslateOnline;
+//import model.ITranslateOnline;
+//import model.TranslateOnline;
 import view.ITranslateUI;
 import view.TranslateUI;
 
@@ -20,11 +22,14 @@ import view.TranslateUI;
 public class TranslateUIController {
 
     private final ITranslateUI translateUI;
-    private ITranslateOnline translateOnline;
-
+//    private ITranslateOnline translateOnline;
+    private final String CLIENT_ID = "Dictionary1";
+    private final String CLIENT_SECRET_KEY ="maUQXnGo1OiClwMB391jMku4Yynnk3KqImUZbH/fL5M=";
     public TranslateUIController() {
         translateUI = new TranslateUI(); // New object UI Translate
-        translateOnline = new TranslateOnline(); // New Model data Translate online provided by Bing Translator.
+        Translate.setClientId(CLIENT_ID);
+        Translate.setClientSecret(CLIENT_SECRET_KEY);
+//        translateOnline = new TranslateOnline(); // New Model data Translate online provided by Bing Translator.
         translateUI.setRbtnEVActionListener(new ActionListener() { // Set action listener for Radio Button English-Vietnamese
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,9 +53,9 @@ public class TranslateUIController {
                 } else { // If text not equals null 
                     String value = "";
                     if (translateUI.getRbtnEV().isSelected()) { // IF English-Vietnamese 
-                        value = translateOnline.translateEV(key); // Translate EV
+                        value = translateEV(key); // Translate EV
                     } else if (translateUI.getRbtnVE().isSelected()) { // If Vietnamese - English 
-                        value = translateOnline.translateVE(key); // Translate VE;
+                        value = translateVE(key); // Translate VE;
                     }
                     translateUI.getTaResults().setText(value); // Return results
                 }
@@ -70,5 +75,29 @@ public class TranslateUIController {
     }
     public void hideUI(){
         translateUI.hideUI();
+    }
+    public String translateVE(String key) {
+        String value="";
+        try {
+            value = Translate.execute(key, Language.VIETNAMESE, Language.ENGLISH);// Execute translating from vietnamese to english
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return value;
+    }
+    /**
+     * (non-Javadoc)
+     *
+     * @see model.ITranslateOnline#translateEV(java.lang.String) ;
+     */
+
+    public String translateEV(String key) {
+        String value="";
+        try {
+            value = Translate.execute(key, Language.ENGLISH, Language.VIETNAMESE); // Execute translating from english to vietnamese
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return value;
     }
 }

@@ -21,7 +21,7 @@ public class TranslateUI extends javax.swing.JFrame implements ITranslateUI{
     public TranslateUI() {
         initComponents();
         taResults.setEditable(false);
-        //setVisible(true);
+//        setVisible(true);
         setLocationRelativeTo(null);
     }
 
@@ -53,6 +53,7 @@ public class TranslateUI extends javax.swing.JFrame implements ITranslateUI{
     public JRadioButton getRbtnVE(){
         return rbtnVE;
     }
+    @Override
     public void setTextVietnamese(){
         btnTranslate.setText("Dịch");
         rbtnEV.setText("Anh-Việt");
@@ -60,6 +61,7 @@ public class TranslateUI extends javax.swing.JFrame implements ITranslateUI{
         setTitle("Dịch online");
         this.repaint();
     }
+    @Override
     public void setTextEnglish(){
         btnTranslate.setText("Translate");
         rbtnEV.setText("Eng-Viet");
@@ -67,9 +69,11 @@ public class TranslateUI extends javax.swing.JFrame implements ITranslateUI{
         setTitle("Translate Online");
         this.repaint();
     }
+    @Override
     public void displayUI(){
         this.setVisible(true);
     }
+    @Override
     public void hideUI(){
         this.setVisible(false);
     }

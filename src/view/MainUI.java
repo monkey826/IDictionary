@@ -8,9 +8,7 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
@@ -32,18 +30,20 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
      */
     public MainUI() {
         initComponents();
-        taMeaning.setEditable(false);
-        taMeaning.setCaretPosition(0);
-        taMeaning.setContentType("text/html");
+        tpMeaning.setEditable(false);
+        tpMeaning.setCaretPosition(0);
+        tpMeaning.setContentType("text/html");
         listIndex.setFont(new Font("Times New Roman", Font.BOLD, 15));
 //        btnCopy.setBorderPainted(false);
         //btnCopy.setFocusPainted(false);
-        btnVE.setContentAreaFilled(false);
+//        btnVE.setContentAreaFilled(false);
+//        btnEV.setContentAreaFilled(false);
         HashMap<TextAttribute, Object> textAttrMap = new HashMap<TextAttribute, Object>();
         textAttrMap.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         textAttrMap.put(TextAttribute.FOREGROUND, Color.BLUE);
 
-         btnVE.setFont( btnVE.getFont().deriveFont(textAttrMap));
+        btnVE.setFont( btnVE.getFont().deriveFont(textAttrMap));
+        btnEV.setFont(btnEV.getFont().deriveFont(textAttrMap));
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -63,29 +63,27 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pnelDictionary = new javax.swing.JPanel();
         btnVE = new javax.swing.JButton();
-        lbToolTip = new javax.swing.JLabel();
         btnEV = new javax.swing.JButton();
         btnListen = new javax.swing.JButton();
-        btnPrint = new javax.swing.JButton();
-        pnelTool = new javax.swing.JPanel();
         btnTranslateSentence = new javax.swing.JButton();
         pnelHelp = new javax.swing.JPanel();
         btnAbout = new javax.swing.JButton();
         btnHelpContents = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listIndex = new javax.swing.JList<>();
+        listIndex = new javax.swing.JList<String>();
         tfSearch = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
         lbListWords = new javax.swing.JLabel();
         lbListResults = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        listResults = new javax.swing.JList<>();
+        listResults = new javax.swing.JList<String>();
         btnSettings = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbWord = new javax.swing.JLabel();
         btnSound = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        taMeaning = new javax.swing.JTextPane();
+        tpMeaning = new javax.swing.JTextPane();
+        jLabel2 = new javax.swing.JLabel();
 
         jButton4.setText("jButton4");
 
@@ -113,72 +111,45 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         btnVE.setText("Viet-Eng");
         btnVE.setToolTipText("Using Vietnamese - English Dictionary");
 
-        lbToolTip.setText("jLabel1");
-
         btnEV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/united_states_of_america.png"))); // NOI18N
         btnEV.setText("Eng-Viet");
         btnEV.setToolTipText("Using English - Vietnamese Dictionary");
 
-        btnListen.setText("Listen");
+        btnListen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lsongs.png"))); // NOI18N
+        btnListen.setText("Listen sentences");
 
-        btnPrint.setText("Print");
+        btnTranslateSentence.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bing_alt_1.png"))); // NOI18N
+        btnTranslateSentence.setText("Translate Online");
 
         javax.swing.GroupLayout pnelDictionaryLayout = new javax.swing.GroupLayout(pnelDictionary);
         pnelDictionary.setLayout(pnelDictionaryLayout);
         pnelDictionaryLayout.setHorizontalGroup(
             pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnelDictionaryLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVE, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                    .addComponent(btnEV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(btnVE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEV)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbToolTip, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(btnListen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTranslateSentence)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnelDictionaryLayout.setVerticalGroup(
             pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnelDictionaryLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnListen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbToolTip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnelDictionaryLayout.createSequentialGroup()
-                        .addComponent(btnVE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEV)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnelDictionaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnVE, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEV, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTranslateSentence, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dictionary & Culture", pnelDictionary);
-
-        btnTranslateSentence.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bing_alt_1.png"))); // NOI18N
-        btnTranslateSentence.setText("Translate Sentence");
-
-        javax.swing.GroupLayout pnelToolLayout = new javax.swing.GroupLayout(pnelTool);
-        pnelTool.setLayout(pnelToolLayout);
-        pnelToolLayout.setHorizontalGroup(
-            pnelToolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnelToolLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(btnTranslateSentence)
-                .addGap(0, 483, Short.MAX_VALUE))
-        );
-        pnelToolLayout.setVerticalGroup(
-            pnelToolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnelToolLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnTranslateSentence, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Tools", pnelTool);
 
         btnAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/info.png"))); // NOI18N
         btnAbout.setText("About");
@@ -196,57 +167,70 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         pnelHelpLayout.setHorizontalGroup(
             pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnelHelpLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(btnHelpContents, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 338, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnelHelpLayout.setVerticalGroup(
             pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnelHelpLayout.createSequentialGroup()
+            .addGroup(pnelHelpLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnHelpContents, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(pnelHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHelpContents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Help", pnelHelp);
 
-        listIndex.setModel(new javax.swing.AbstractListModel<String>() {
+        listIndex.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listIndex);
 
         tfSearch.setToolTipText("Enter word here");
 
+        lbSearch.setBackground(new java.awt.Color(102, 204, 255));
+        lbSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbSearch.setForeground(new java.awt.Color(255, 204, 51));
+        lbSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/find.png"))); // NOI18N
         lbSearch.setLabelFor(tfSearch);
         lbSearch.setText("Search");
-        lbSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbSearch.setBorder(new javax.swing.border.MatteBorder(null));
 
+        lbListWords.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbListWords.setForeground(new java.awt.Color(255, 153, 51));
+        lbListWords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/program_group.png"))); // NOI18N
         lbListWords.setLabelFor(listIndex);
         lbListWords.setText("Index");
-        lbListWords.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbListWords.setBorder(new javax.swing.border.MatteBorder(null));
+        lbListWords.setIconTextGap(10);
 
+        lbListResults.setBackground(new java.awt.Color(102, 255, 102));
+        lbListResults.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbListResults.setForeground(new java.awt.Color(255, 153, 0));
+        lbListResults.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/document_open_recent.png"))); // NOI18N
         lbListResults.setLabelFor(listResults);
         lbListResults.setText("Results");
-        lbListResults.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbListResults.setBorder(new javax.swing.border.MatteBorder(null));
 
-        listResults.setModel(new javax.swing.AbstractListModel<String>() {
+        listResults.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(listResults);
 
         btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/setting1.png"))); // NOI18N
         btnSettings.setText("Settings");
 
+        lbWord.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         btnSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/audio.png"))); // NOI18N
-        btnSound.setText("sounds");
         btnSound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSoundActionPerformed(evt);
@@ -258,31 +242,21 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(lbWord, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSound)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnSound, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lbWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lbWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jScrollPane4.setViewportView(taMeaning);
+        jScrollPane4.setViewportView(tpMeaning);
 
-        jDesktopPane1.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(tfSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lbSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lbListWords, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(lbListResults, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnSettings, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/vietnam_flag2.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -299,48 +273,59 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
                                 .addComponent(lbListResults, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(tfSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSettings))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jTabbedPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4))))
+                    .addComponent(jScrollPane4)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 476, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addComponent(btnSettings)
-                .addGap(14, 14, 14)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(lbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbListWords, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(lbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbListWords, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbListResults, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4)))
-                .addGap(2, 2, 2))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4)))
         );
+        jDesktopPane1.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(tfSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lbSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lbListWords, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lbListResults, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnSettings, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,49 +340,48 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoundActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSoundActionPerformed
+
+    private void btnHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpContentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHelpContentsActionPerformed
     
     public void setStyleButonEV(){
         
     }
     public void setStyleButtonVE(){
         
-    }
-    private void btnSoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoundActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSoundActionPerformed
-    
-    private void btnHelpContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpContentsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHelpContentsActionPerformed
-    @Override
-    public void setListMouseAction(MouseAdapter listener) {                                       
-        // TODO add your handling code here:
-        this.listIndex.addMouseListener(listener);
-    }   
-    @Override
-    public void setListKeyAction(KeyAdapter listener){
-        this.listIndex.addKeyListener(listener);
-    }
+    }    //    @Override
+//    public void setListIndexValueChanged(javax.swing.event.ListSelectionListener listener) {                                       
+//        // TODO add your handling code here:
+//        this.listIndex.addListSelectionListener(listener);
+//    }                                      
+
     @Override
     public void setTfSearchKeyListener(java.awt.event.KeyListener listener) {                                     
         // TODO add your handling code here:
         this.tfSearch.addKeyListener(listener);
     }                                    
-    public JList getListRerult(){
-        return this.listResults;
-    }
+
          
     @Override
     public void setBtnSettingsActionListener(java.awt.event.ActionListener listener) {                                            
         // TODO add your handling code here:
         this.btnSettings.addActionListener(listener);
     }                                           
-
-    @Override
-    public void setBtnPrintActionListener(java.awt.event.ActionListener listener) {                                         
-        // TODO add your handling code here:
-        this.btnPrint.addActionListener(listener);
-    }                                        
+    public void setListResultMouseAction(MouseAdapter listener){
+        listResults.addMouseListener(listener);
+    }
+    public void setListResultKeyAction(KeyAdapter listener){
+        listResults.addKeyListener(listener);
+    }
+    public JList getListRerult(){
+        return this.listResults;
+    }
+                                          
 
     @Override
     public void setBtnTranslateSentenceActionListener(java.awt.event.ActionListener listener) {                                                     
@@ -423,22 +407,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }                                         
 
     @Override
-<<<<<<< HEAD
-    public void setBtnCopyActionListener(java.awt.event.ActionListener evt) {                                        
-        // TODO add your handling code here:
-        this.btnCopy.addActionListener(evt);
-    }                                       
-    public void setListResultMouseAction(MouseAdapter listener){
-        listResults.addMouseListener(listener);
-    }
-    public void setListResultKeyAction(KeyAdapter listener){
-        listResults.addKeyListener(listener);
-    }
-    @Override
-    public void setBtnHelpContentsActionListener(java.awt.event.ActionListener evt) {                                                
-=======
     public void setBtnHelpContentsActionListener(java.awt.event.ActionListener listener) {                                                
->>>>>>> origin/master
         // TODO add your handling code here:
         this.btnHelpContents.addActionListener(listener);
     }  
@@ -450,7 +419,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
         btnSound.addActionListener(listener);
     }
     public void setTaMeaningAction(MouseAdapter listener){
-        taMeaning.addMouseListener(listener);
+        tpMeaning.addMouseListener(listener);
     }
     @Override
     public JList getListIndex(){
@@ -458,7 +427,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }
     @Override
     public JTextPane getTaMeaning(){
-        return this.taMeaning;
+        return this.tpMeaning;
     }
     @Override
     public JTextField getTfSearch(){
@@ -477,53 +446,36 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     }
      public void updateUI(){
          this.repaint();
-<<<<<<< HEAD
-     }
-=======
-<<<<<<< HEAD
      }
     @Override
-=======
-    }
-    public void displayUI(){
-        this.setVisible(true);
-    } 
->>>>>>> origin/master
->>>>>>> origin/master
     public void setTextEng(){
         btnAbout.setText("About");
         btnEV.setText("Eng-Viet");
         btnHelpContents.setText("Help Contents");
         btnListen.setText("Listen");
-        btnPrint.setText("Print");
         btnSettings.setText("Settings");
-        btnSound.setText("Sound");
-        btnTranslateSentence.setText("Translate Sentence");
+        btnTranslateSentence.setText("Translate Online");
         btnVE.setText("Viet-Eng");
         jButton4.setText(null);
         pnelDictionary.setName("Dictionary & Culture");
         pnelHelp.setName("Help");
-        pnelTool.setName("Tool");
 //        this.repaint();
        
     }
+    @Override
     public void setTextViet(){
         btnAbout.setText("Thông tin");
         btnEV.setText("Anh-Việt");
         btnHelpContents.setText("Trợ giúp");
         btnListen.setText("Nghe");
-        btnPrint.setText("In");
         btnSettings.setText("Cài đặt");
-        btnSound.setText("Đọc");
         btnTranslateSentence.setText("Dịch online");
         btnVE.setText("Việt-Anh");
         jButton4.setText(null);
         pnelDictionary.setName("Chọn từ điển");
         pnelHelp.setName("Trợ giúp");
-        pnelTool.setName("Công cụ");
 //         this.repaint();
     }
-    
     
 
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -554,7 +506,6 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     private javax.swing.JButton btnEV;
     private javax.swing.JButton btnHelpContents;
     private javax.swing.JButton btnListen;
-    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnSettings;
     private javax.swing.JButton btnSound;
     private javax.swing.JButton btnTranslateSentence;
@@ -562,6 +513,7 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     private javax.swing.JButton jButton4;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -570,14 +522,24 @@ public class MainUI extends javax.swing.JFrame implements IMainUI {
     private javax.swing.JLabel lbListResults;
     private javax.swing.JLabel lbListWords;
     private javax.swing.JLabel lbSearch;
-    private javax.swing.JLabel lbToolTip;
     private javax.swing.JLabel lbWord;
     private javax.swing.JList<String> listIndex;
     private javax.swing.JList<String> listResults;
     private javax.swing.JPanel pnelDictionary;
     private javax.swing.JPanel pnelHelp;
-    private javax.swing.JPanel pnelTool;
-    private javax.swing.JTextPane taMeaning;
     private javax.swing.JTextField tfSearch;
+    private javax.swing.JTextPane tpMeaning;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void setListMouseAction(MouseAdapter listener) {                                       
+        // TODO add your handling code here:
+        this.listIndex.addMouseListener(listener);
+    }   
+    @Override
+    public void setListKeyAction(KeyAdapter listener){
+        this.listIndex.addKeyListener(listener);
+    }
+
+    
 }
