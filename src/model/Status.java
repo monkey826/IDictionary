@@ -9,6 +9,7 @@ package model;
  *
  * @author HOANG_HUYNH
  */
+import java.awt.Color;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 /**
@@ -127,4 +128,5 @@ public class Status implements IStatus{
     public void setColorPhrase(String colorPhrase) {
         this.colorPhrase = colorPhrase;
     }
+    
 }

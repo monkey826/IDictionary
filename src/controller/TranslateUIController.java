@@ -19,7 +19,7 @@ import view.TranslateUI;
  *
  * @author Monkey-private
  */
-public class TranslateUIController {
+public class TranslateUIController implements ITranslateUIController{
 
     private final ITranslateUI translateUI;
 //    private ITranslateOnline translateOnline;
@@ -30,6 +30,11 @@ public class TranslateUIController {
         Translate.setClientId(CLIENT_ID);
         Translate.setClientSecret(CLIENT_SECRET_KEY);
 //        translateOnline = new TranslateOnline(); // New Model data Translate online provided by Bing Translator.
+        setRbtnEVAction();
+        setRbtnVEAction();
+        setBtnTranslateClickAction();
+    }
+    public void setRbtnEVAction(){
         translateUI.setRbtnEVActionListener(new ActionListener() { // Set action listener for Radio Button English-Vietnamese
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,6 +42,8 @@ public class TranslateUIController {
                 translateUI.getTaSource().setText("");
             }
         });
+    }
+    public void setRbtnVEAction(){
         translateUI.setRbtnVEActionListener(new ActionListener() { // // Set action listener for Radio Button VietNamese-English
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,6 +51,8 @@ public class TranslateUIController {
                 translateUI.getTaSource().setText("");
             }
         });
+    }
+    public void setBtnTranslateClickAction(){
         translateUI.setBtnTranslateActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

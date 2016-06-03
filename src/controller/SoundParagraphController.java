@@ -14,7 +14,7 @@ import view.SoundParagraphUI;
  *
  * @author HOANG_HUYNH
  */
-public class SoundParagraphController {
+public class SoundParagraphController implements ISoundParagraphController{
     private SoundParagraphUI soundParagraphUI;
     private MainUIController mainUIController;
     public SoundParagraphController(MainUIController mainUIController){
@@ -29,7 +29,7 @@ public class SoundParagraphController {
             public void actionPerformed(ActionEvent e) {
                 String textNeedToHear=soundParagraphUI.getTextNeedToHear();
               if(textNeedToHear!=null) 
-                mainUIController.doSpeak(textNeedToHear, "kevin16");
+                mainUIController.getSoundManage().doSpeak(textNeedToHear, "kevin16");
             }
         });
     }

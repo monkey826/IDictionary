@@ -21,8 +21,8 @@ public interface IWord {
      */
     public int getLength();
     /**
-     * 
-     * @return 
+     * Get word ( not object , a string )
+     * @return word string.
      */
     public String getWord();
 }

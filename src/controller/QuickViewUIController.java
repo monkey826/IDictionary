@@ -12,7 +12,7 @@ import view.QuickViewUI;
  *
  * @author HOANG_HUYNH
  */
-public class QuickViewUIController {
+public class QuickViewUIController implements IQuickViewUIController{
     private IQuickViewUI quickViewUI;
     public QuickViewUIController(){
         quickViewUI=new QuickViewUI();

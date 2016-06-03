@@ -79,7 +79,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane1" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                   <Component id="lbListWords" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
-                                  <Component id="lbListResults" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="lbListHistory" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                                   <Component id="jScrollPane3" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -97,7 +97,7 @@
                           <Component id="btnSettings" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane4" max="32767" attributes="0"/>
-                      <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="tab" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="476" max="32767" attributes="0"/>
@@ -111,7 +111,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Component id="btnSettings" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel2" pref="33" max="32767" attributes="0"/>
@@ -120,20 +120,23 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="tfSearch" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jTabbedPane1" min="-2" pref="94" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="tab" pref="94" max="32767" attributes="0"/>
+                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="lbListWords" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="240" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lbListResults" min="-2" pref="20" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="240" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="lbListHistory" min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" pref="157" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane4" max="32767" attributes="0"/>
@@ -143,7 +146,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+        <Container class="javax.swing.JTabbedPane" name="tab">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -365,7 +368,7 @@
             <Property name="iconTextGap" type="int" value="10"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbListResults">
+        <Component class="javax.swing.JLabel" name="lbListHistory">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="ff" red="66" type="rgb"/>
@@ -380,7 +383,7 @@
               <Image iconType="3" name="/icon/document_open_recent.png"/>
             </Property>
             <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="listResults"/>
+              <ComponentRef name="listHistory"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Results"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -397,7 +400,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="listResults">
+            <Component class="javax.swing.JList" name="listHistory">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="1">
@@ -434,7 +437,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbWord" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lbWord" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="btnSound" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -442,10 +445,11 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lbWord">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder/>
-                  </Border>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="14" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="0" red="0" type="rgb"/>
                 </Property>
               </Properties>
             </Component>

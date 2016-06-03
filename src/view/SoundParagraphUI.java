@@ -12,7 +12,7 @@ import javax.swing.JFrame;
  *
  * @author HOANG_HUYNH
  */
-public class SoundParagraphUI extends javax.swing.JFrame {
+public class SoundParagraphUI extends javax.swing.JFrame implements ISoundParaghraphUI{
 
     /**
      * Creates new form SoundParagraphUI

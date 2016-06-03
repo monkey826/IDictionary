@@ -21,25 +21,34 @@ import java.util.Vector;
 public class Dictionary implements IDictionary {
 
     private Vector<Word> words = new Vector<>();
-    private int type;//type of dictionary(VE is 2- or EV is 1)
-    //construct
+    private int type;//type of dictionary (VE is 2 or EV is 1)
+
+    /**
+     * Constructor for load index file and identify type of dictionary
+     *
+     * @param type
+     */
     public Dictionary(int type) {
         // Init hashtable
-        this.type=type;
+        this.type = type;
         loadIndex();
     }
 
+    /**
+     * (Non-Javadoc)
+     *
+     * @see model.IDictionary#loadIndex()
+     */
+    @Override
     public void loadIndex() {
         String filePathIndex;
-        if(type==1)
-            filePathIndex=pathIndexEV;
-        else
-            filePathIndex=pathIndexVE;
-        
-        long begin = System.currentTimeMillis();
-        
+        if (type == 1) {
+            filePathIndex = this.getClass().getClassLoader().getResource("data/anhviet109K.index").toString().substring(6);
+        } else {
+            filePathIndex = this.getClass().getClassLoader().getResource("data/vietanh.index").toString().substring(6);
+        }
         try {
-            // Using StringBuilder 
+            // Using stringbuilder ( a thread )with big data and faster than StringBuffer 
             StringBuilder strBuilder = new StringBuilder();
             try (FileInputStream input = new FileInputStream(new File(filePathIndex))) {
                 byte[] buffer = new byte[1024];
@@ -57,23 +66,28 @@ public class Dictionary implements IDictionary {
                     if (elements.length == 3) { // If enough word,off,length
                         int offset = base64ToBase10(elements[1]);
                         int length = base64ToBase10(elements[2]);
-                        // Add to vector words.
                         // Create a new word;
                         Word word = new Word(elements[0], offset, length);
-                        // Add to hashtable;
+                         // Add to vector words.
                         words.add(word);
                     }
                 }
-                
+
             }
         } catch (IOException ioe) {
             System.out.println("Error IO " + ioe.getMessage());;
         }
-        for(int i=0;i<29;i++) words.remove(0);
-        long end = System.currentTimeMillis();
-        System.out.println("Load indexes file took " + (end - begin) + " ms");
+        for (int i = 0; i < 29; i++) {
+            words.remove(0);
+        }
     }
 
+    /**
+     * Convert base 64 to base 10 function
+     *
+     * @param val
+     * @return
+     */
     public int base64ToBase10(String val) {
         int number = 0;
         int length = val.length();
@@ -84,12 +98,19 @@ public class Dictionary implements IDictionary {
         return number;
     }
 
+    /**
+     * (Non-Javadoc)
+     *
+     * @see model.IDictionary#loadMeaning(java.lang.String)
+     */
     @Override
     public String loadMeaning(String word) {
         String filePathDict;
-        if(type==1)
-            filePathDict=pathMeaningEV;
-        else filePathDict=pathMeaningVE;
+        if (type == 1) {
+            filePathDict = this.getClass().getClassLoader().getResource("data/anhviet109K.dict").toString().substring(6);
+        } else {
+            filePathDict = this.getClass().getClassLoader().getResource("data/vietanh.dict").toString().substring(6);
+        }
         RandomAccessFile raf = null;
         String meaning = "";
         try {
@@ -106,22 +127,32 @@ public class Dictionary implements IDictionary {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         return meaning;
     }
-    public Word getWord(String wordSource){
+
+    /**
+     * Find this word need to see meaning in Vector word.
+     *
+     * @param wordSource
+     * @return a instance of object Word
+     */
+    public Word getWord(String wordSource) {
         Word word = null;
         Iterator it = words.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             word = (Word) it.next();
-            if (word.getWord().equals(wordSource))
+            if (word.getWord().equals(wordSource)) {
                 return word;
+            }
         }
         return word;
     }
+
     /**
+     * (Non-Javadoc)
      *
-     * @return
+     * @see model.IDictionary#getListWord()
      */
     @Override
     public Vector<Word> getListWord() {

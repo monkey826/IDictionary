@@ -12,11 +12,19 @@ import java.util.Vector;
  * @author Monkey-private
  */
 public interface IDictionary {
-    public final String pathIndexEV = System.getProperty("user.dir").concat("/data/anhviet109K.index");
-    public final String pathMeaningEV = System.getProperty("user.dir").concat("/data/anhviet109K.dict");
-    public final String pathIndexVE = System.getProperty("user.dir").concat("/data/vietanh.index");
-    public final String pathMeaningVE = System.getProperty("user.dir").concat("/data/vietanh.dict");
+    /**
+     * Get List word from file index.
+     * @return a vector store all word in data index file
+     */
     public Vector<Word> getListWord();
+    /**
+     * Load index file and add all word into vector Word.
+     */
     public void loadIndex();
+    /**
+     * Load meaning of this word param.
+     * @param word
+     * @return meaning
+     */
     public String loadMeaning(String word);    
 }
